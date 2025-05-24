@@ -1,0 +1,26 @@
+{
+  "inheritance_trials": {
+    "description": "Inheritance trials are structured spiritual events that test the cultivator\u2019s compatibility with law, soul form, and willpower. Trials may be tied to Law Realms, ruins, or ancestral vaults.",
+    "trigger_types": [
+      "Breakthrough milestone (e.g., Silver \u2192 Gold)",
+      "Spiritual resonance in a Law-aligned region",
+      "Manual activation via soul item or sect token"
+    ],
+    "trial_formats": [
+      "Law comprehension chamber (pass/fail)",
+      "Combat simulation against soul phantom",
+      "Puzzle-based soul alignment lock"
+    ],
+    "possible_rewards": [
+      "Named technique",
+      "Soul-bound item",
+      "Law Affinity Buff (+10%\u201330%)",
+      "Stat increase or vision fragment"
+    ],
+    "status": "Trial outcomes fully described. Expansion flagged for difficulty scaling logic and table integration."
+  },
+  "combat_system_integration": {
+    "status": "Linked",
+    "reference": "combat/combat_calculation.full.json"
+  }
+}

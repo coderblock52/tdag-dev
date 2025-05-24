@@ -1,0 +1,10 @@
+{
+  "loot_tables": [
+    {
+      "context": "demon_beast_rank_4+",
+      "drop_type": "demon_spirit",
+      "ref": "systems/items/loot/demon_spirit_drops.json"
+    }
+  ],
+  "notes": "Central loot lookup to be expanded with elixirs, equipment, event loot, etc."
+}

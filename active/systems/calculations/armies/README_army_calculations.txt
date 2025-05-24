@@ -1,0 +1,1 @@
+Each file in this directory represents a modular piece of the army combat system. Army types (cultivator, fighter, beast) are separated for balance and expansion. Modifiers include formation, morale, terrain bonuses.

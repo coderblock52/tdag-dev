@@ -1,0 +1,38 @@
+{
+  "cultivation_title_generator": {
+    "components": {
+      "prefixes": [
+        "Flame",
+        "Iron",
+        "Blood",
+        "Void",
+        "Heavenly",
+        "Shadow",
+        "Blazing"
+      ],
+      "roots": [
+        "Fist",
+        "Claw",
+        "Eye",
+        "Soul",
+        "Blade",
+        "Will"
+      ],
+      "suffixes": [
+        "Breaker",
+        "Herald",
+        "Bearer",
+        "Seeker",
+        "Scion",
+        "King"
+      ]
+    },
+    "examples": [
+      "Blazing Soulbreaker",
+      "Void Claw Seeker",
+      "Heavenly Blade King"
+    ],
+    "status": "Build Mode compliant",
+    "flag": "None"
+  }
+}

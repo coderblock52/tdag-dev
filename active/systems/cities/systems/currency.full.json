@@ -1,0 +1,39 @@
+{
+  "currency_system": {
+    "primary_currency": "Demon Spirit Coins",
+    "description": "Used across all realms, sects, and cities. Tracked as the main unit for cultivation resources, auction trade, and elite item transactions.",
+    "abbreviation": "DSC"
+  },
+  "valuation_mechanics": {
+    "tiered_item_pricing": {
+      "description": "Items are priced according to their rarity, tier, and role in cultivation progression.",
+      "examples": [
+        "Tier 1 (Common items): 5\u201320 DSC",
+        "Tier 2 (Basic pills, iron-grade weapons): 20\u2013100 DSC",
+        "Tier 3 (Sect techniques, epic pills): 100\u20131000 DSC",
+        "Tier 4 (Legendary items, arrays): 1000+ DSC"
+      ]
+    },
+    "exploration_loot_pricing": {
+      "logic": "Loot retrieved from fieldwork is appraised based on its tier, material type, and region of origin.",
+      "modifiers": [
+        "+15% value if appraised in a major city",
+        "-10% value if sold to traveling merchants",
+        "+25% if item includes runemaster or beast-part enhancements"
+      ]
+    },
+    "auction_logic": {
+      "behavior": "Dynamic pricing system for rare items.",
+      "factors": [
+        "Number of competing buyers",
+        "City tier or faction hosting the auction",
+        "Cultivator reputation (high = reduced entry fee)"
+      ]
+    }
+  },
+  "integration_notes": {
+    "link_to_tiers": "All economy features interact with the city tier and item rank systems.",
+    "worldwide_use": "Demon Spirit Coins are universally accepted, even between enemy sects or rival villages.",
+    "bartering": "Still occurs for ultra-rare items or personalized trades (e.g., bloodline essence, soul-bound techniques)."
+  }
+}

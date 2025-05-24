@@ -1,0 +1,24 @@
+{
+  "formula_name": "Cultivation Speed Multiplier",
+  "base_source": "soul_force_per_hour from cultivation technique",
+  "modifiers_applied": [
+    {
+      "source": "core_modifiers.json"
+    },
+    {
+      "source": "technique_synergy_modifiers.json"
+    },
+    {
+      "source": "demon_beast_synergy_modifiers.json"
+    },
+    {
+      "source": "item_modifiers.json"
+    },
+    {
+      "source": "environmental_modifiers.json"
+    }
+  ],
+  "calculation_method": "Layered Multiplicative",
+  "formula": "Cultivation Speed = Base Soul Force \u00d7 (1 + sum of core + technique synergy modifiers) \u00d7 (1 + sum of demon beast synergy modifiers) \u00d7 (1 + sum of item + environmental modifiers)",
+  "notes": "All modifiers are applied as additive bonuses within their category, then multiplied together for final speed."
+}

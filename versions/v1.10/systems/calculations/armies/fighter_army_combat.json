@@ -1,0 +1,10 @@
+{
+  "description": "Calculates per-unit combat power for fighter-only armies (no soul force).",
+  "formula": "Body + Equipment + 10% Group Combat Bonus",
+  "assumptions": [
+    "Body is determined by body rank",
+    "Equipment pulled from matching rank",
+    "No soul force or demon spirit"
+  ],
+  "validator_reference": "valid_body_ranks.json"
+}

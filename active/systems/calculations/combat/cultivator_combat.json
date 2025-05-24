@@ -1,0 +1,12 @@
+{
+  "description": "Calculates combat power for cultivators.",
+  "base_formula": "((Soul_Force \u00d7 (1 + Armor_Modifier + Weapon_Modifier)) + Body) \u00d7 (1 + Energy_Type_Bonus) \u00d7 (1 + Soul_Form_Bonus + Bloodline_Quality_Bonus + Other_Bonuses) + Merged_Demon_Spirit_Power (if merged)",
+  "modifiers": {
+    "energy_type_bonus": {
+      "Law Energy": 0.25,
+      "Heavenly Energy": 0.5
+    },
+    "soul_form_bonus": "Varies from +20% to +300% depending on compatibility and form"
+  },
+  "validator_reference": "valid_soul_ranks.json"
+}

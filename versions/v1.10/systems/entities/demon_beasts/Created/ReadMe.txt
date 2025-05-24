@@ -1,0 +1,1 @@
+this directory defines different demon beasts that have been predefined. Information should include all attributes or ranges of attributes such as ranks and bloodline qualities along with likely world/realm/region to find them

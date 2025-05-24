@@ -1,0 +1,30 @@
+{
+  "city_tiers": {
+    "Tier 1": {
+      "Poor": 20,
+      "Good": 30,
+      "Great": 30,
+      "Excellent": 15,
+      "God": 5
+    },
+    "Tier 3": {
+      "Poor": 50,
+      "Good": 40,
+      "Great": 9,
+      "Excellent": 1,
+      "God": 0
+    }
+  },
+  "backgrounds": {
+    "Pillar Clan": {
+      "Great": 40,
+      "Excellent": 40,
+      "God": 20
+    },
+    "Commoner": {
+      "Poor": 60,
+      "Good": 35,
+      "Great": 5
+    }
+  }
+}

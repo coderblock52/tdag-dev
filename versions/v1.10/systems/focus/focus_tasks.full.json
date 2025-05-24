@@ -1,0 +1,32 @@
+{
+  "focus_task_system": {
+    "definition": "Focus tasks are core objectives a cultivator or character is concentrating on. They guide narrative pacing and may affect breakthroughs or questlines.",
+    "management_rules": {
+      "HR23": {
+        "title": "Dynamic Task Handling",
+        "permissions": [
+          "Change an existing focus task mid-way",
+          "Cancel a focus task before completion",
+          "Advance a task early based on story events or triggers"
+        ],
+        "note": "Confirmed as a tracked system rule in both dev 2 and dev 3. Allows story to adapt to player decisions or dynamic world events."
+      }
+    },
+    "integration": {
+      "trigger_examples": [
+        "Breakthrough task reaches key milestone and forces an early cultivation test",
+        "City lord management task intersects with invasion questline",
+        "Loyalty or betrayal events tied to a follower focus task"
+      ],
+      "system_dependents": [
+        "Quest system",
+        "Cultivation milestones",
+        "Generator-based outcomes"
+      ]
+    },
+    "notes": {
+      "task_status_states": "Not yet fully defined or categorized beyond HR23.",
+      "expansion_hooks": "May later support ranked difficulty, multi-step chains, or spiritual pressure modifiers."
+    }
+  }
+}

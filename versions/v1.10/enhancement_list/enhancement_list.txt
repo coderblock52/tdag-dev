@@ -1,0 +1,14 @@
+# ✅ TDAG Enhancement Checklist
+
+This document tracks pending improvements and future work categorized by system type.
+
+---
+
+## 🧪 Generators
+- [ ] Cultivation technique name generator
+- [ ] Cultivator generator (named cultivators using soul_force_generator)
+- [ ] Army generator(s) for unit creation (cultivators, fighters, beasts)
+
+---
+
+(More categories and items can be added as work progresses.)

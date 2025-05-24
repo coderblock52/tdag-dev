@@ -1,0 +1,25 @@
+{
+  "named_techniques": {
+    "description": "Tracks cultivation techniques given unique names and attributes. Named techniques override default technique quality behavior and often carry legacy effects or narrative significance.",
+    "confirmed_techniques": [
+      {
+        "name": "Holy Primal Chaos Technique",
+        "quality_override": "Yes",
+        "effects": [
+          "Highly compatible with Chaos soul forms",
+          "May grant increased cultivation speed or breakthrough chance",
+          "Usable only by cultivators with soul affinity >= 80%"
+        ]
+      }
+    ],
+    "naming_notes": {
+      "format": "[Prefix] + [Core Concept] + [Structure]",
+      "examples": [
+        "Heavenly Pulse Flow",
+        "Blazing Dragon Scripture",
+        "Silent Moon Collapse"
+      ]
+    },
+    "expansion": "Additional techniques may be discovered via ruins, inheritance trials, or sect libraries. Override stats must be manually defined per technique."
+  }
+}

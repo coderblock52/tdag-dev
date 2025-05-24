@@ -1,0 +1,30 @@
+{
+  "description": "Generates a special herb unique to a noble or pillar clan, with a rare chance to exist.",
+  "rarity": "Rare (1 in 10 Pillar Clans)",
+  "format": "(family_name) special (plant_type)",
+  "plant_types": [
+    "root",
+    "grass",
+    "flower",
+    "vine",
+    "leaf",
+    "seed"
+  ],
+  "quality_range": {
+    "min_quality": "Low",
+    "max_quality": "Legendary"
+  },
+  "quality_mode": "hybrid",
+  "roll_weights": {
+    "default": true,
+    "weights": {
+      "root": 25,
+      "grass": 25,
+      "flower": 20,
+      "vine": 15,
+      "leaf": 10,
+      "seed": 5
+    }
+  },
+  "notes": "To be called only for 10% of Pillar Clans. Supports quality override via 'force_quality'."
+}

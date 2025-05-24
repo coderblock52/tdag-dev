@@ -1,0 +1,18 @@
+{
+  "noble_family_roles": {
+    "description": "Explains how non-pillar noble families operate as prestige-focused city elites with sect, trade, or festival roles.",
+    "categories": [
+      "Spiritual Auctioneers",
+      "Festival Organizers",
+      "Sect Patrons",
+      "Cultural or alchemy specialists"
+    ],
+    "promotion_paths": [
+      "Petition for Pillar recognition",
+      "Gain majority wealth/market control",
+      "Defend city from external threat and prove legacy"
+    ],
+    "status": "Build Mode compliant",
+    "flag": "None"
+  }
+}

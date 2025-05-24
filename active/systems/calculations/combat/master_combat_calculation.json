@@ -1,0 +1,10 @@
+{
+  "description": "Reference file listing all modular combat calculation paths.",
+  "combat_paths": {
+    "cultivator": "cultivator_combat.json",
+    "fighter": "fighter_combat.json",
+    "demon_beast": "demon_beast_combat.json",
+    "merged_demon_spirit": "merged_demon_spirit_combat.json",
+    "shared_modifiers": "combat_modifiers.json"
+  }
+}

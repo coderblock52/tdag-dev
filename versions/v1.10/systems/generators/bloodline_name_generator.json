@@ -1,0 +1,21 @@
+{
+  "bloodline_name_generator": {
+    "format": "[quality] [special_name] [type] Bloodline",
+    "quality": [
+      "Common",
+      "Uncommon",
+      "Rare",
+      "Epic",
+      "Legendary",
+      "Divine"
+    ],
+    "special_name": {
+      "type": "from_beast",
+      "source": "type"
+    },
+    "type": {
+      "type": "from_beast",
+      "source": "type"
+    }
+  }
+}

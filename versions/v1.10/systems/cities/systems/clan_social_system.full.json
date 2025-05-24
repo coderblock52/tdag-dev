@@ -1,0 +1,31 @@
+{
+  "clan_social_system": {
+    "description": "Defines how clans rank, reward, and evaluate members using reputation and internal rank.",
+    "reputation_gain": [
+      "Quest contribution",
+      "Duel victories",
+      "Resource donation",
+      "Clan defense or raid participation"
+    ],
+    "internal_ranks": [
+      "Outer Member",
+      "Core Disciple",
+      "Elder Candidate",
+      "Inner Council",
+      "Clan Heir",
+      "Clan Head"
+    ],
+    "social_events": [
+      "Punishment or exile",
+      "Rank promotion or demotion",
+      "Resource redistribution",
+      "Initiation and loyalty tests"
+    ],
+    "status": "Build Mode compliant",
+    "flag": "None"
+  },
+  "combat_system_integration": {
+    "status": "Linked",
+    "reference": "combat/combat_calculation.full.json"
+  }
+}

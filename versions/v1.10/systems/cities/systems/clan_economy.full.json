@@ -1,0 +1,24 @@
+{
+  "clan_economy": {
+    "description": "Tracks methods for clan and family revenue generation across city and region systems.",
+    "methods": [
+      "Tavern and market ownership",
+      "Cultivation ground leasing",
+      "Auctioning beast parts, pills, spirit items",
+      "Patronage from sects or noble families",
+      "City decree enforcement and enforcement patrols",
+      "Marriage and alliance bonds"
+    ],
+    "distribution_modes": [
+      "Clan-wide equal payout",
+      "Rank-based percentage split",
+      "Merit-based reward pool"
+    ],
+    "status": "Build Mode compliant",
+    "flag": "None"
+  },
+  "combat_system_integration": {
+    "status": "Linked",
+    "reference": "combat/combat_calculation.full.json"
+  }
+}

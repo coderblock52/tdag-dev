@@ -1,0 +1,33 @@
+{
+  "demon_spirit_generator": {
+    "name_format": "([Attribute if not Neutral] + [Special Name if Gold+] + [Type])",
+    "growth_rate_odds": {
+      "Bronze": {
+        "Excellent": 70,
+        "God": 30
+      },
+      "Other": {
+        "Poor": 30,
+        "Good": 50,
+        "Great": 15,
+        "Excellent": 4,
+        "God": 1
+      }
+    },
+    "inherits_fields": [
+      "attribute",
+      "type",
+      "rank",
+      "bloodline",
+      "soul_force"
+    ],
+    "additional_field": "growth_rate",
+    "is_item_type": "demon_spirit",
+    "soul_force": {
+      "generation_method": "inherited_or_generated",
+      "primary": "inherited",
+      "fallback": "soul_force_generator.json",
+      "notes": "If demon beast source is undefined, generate based on spirit's rank and subrank"
+    }
+  }
+}

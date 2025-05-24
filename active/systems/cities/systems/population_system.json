@@ -1,0 +1,55 @@
+{
+  "population_system": {
+    "description": "Tracks simulation-wide class structure for commoners, nobles, and pillar families, along with behavioral rules and special roles.",
+    "classes": {
+      "Commoners": {
+        "description": "Base population. Provides labor, basic soldiers, and low-tier cultivators.",
+        "limitations": [
+          "Cannot awaken beyond Red soul color",
+          "No access to advanced cultivation techniques",
+          "Excluded from city council or core family voting"
+        ],
+        "roles": [
+          "militia",
+          "labor",
+          "scout units"
+        ],
+        "notes": "Largest population pool. Rarely triggers narrative effects unless elevated by special events."
+      },
+      "Noble Families": {
+        "description": "Tracked as a single elite group with shared wealth and influence. Have higher-quality soul colors and better training.",
+        "benefits": [
+          "Increased wealth and city prestige",
+          "Can rise to Pillar status if a clan falls or a major event is triggered",
+          "Tracked in narrative systems (e.g., romance, sabotage, school appointments)"
+        ],
+        "promotion_path": [
+          "Rare soul color",
+          "Soul wing formation",
+          "Exceptionally rare cultivation technique"
+        ],
+        "trigger_conditions": "Player interaction or triggered by city-wide political shifts"
+      },
+      "Pillar Clans": {
+        "description": "Elite families with individual member tracking (10 per clan). Control city functions and advanced cultivation resources.",
+        "perks": [
+          "Access to spirit beasts and rare cultivation techniques",
+          "Tracked income and assigned business interests",
+          "Voting and appointment power (e.g., City Lord selection)"
+        ],
+        "soul_color_distribution": {
+          "Purple": "5% (City Lord eligible)",
+          "Other": "Weighted upward toward Yellow, Blue, and Violet"
+        },
+        "population_tracking": "Individual member tracking for cultivation, status, and interactions"
+      }
+    },
+    "simulation_hooks": {
+      "growth": "Base population increases slowly over time unless raided or starved",
+      "army_size": "Derived from total population, affected by tech tier and raid losses",
+      "event_responses": "Raids, famine, and prestige events reduce pop and influence army loyalty"
+    },
+    "status": "Build Mode compliant",
+    "flag": "Connect to city lord system and army composition modules"
+  }
+}

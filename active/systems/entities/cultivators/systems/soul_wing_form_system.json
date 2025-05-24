@@ -1,0 +1,35 @@
+{
+  "soul_wing_integration_system": {
+    "description": "Links soul wing forming logic into breakthroughs, quests, and emotional events.",
+    "linked_systems": [
+      "cultivation_rank_thresholds.json",
+      "soul_wing_forming_system.json",
+      "soul_wing_breakthrough_event_system.json"
+    ],
+    "monitoring": {
+      "check_on_breakthrough": true,
+      "check_on_quest_events": [
+        "betrayal",
+        "death of friend",
+        "overwhelming fear",
+        "victory at cost"
+      ],
+      "check_on_relationship_triggers": [
+        "bond rupture",
+        "confession",
+        "emotional rejection"
+      ]
+    },
+    "emotional_trigger_logic": {
+      "condition": "Player has never soul wing formed",
+      "chance_formula": "Purity \u00d7 0.1% + 5%",
+      "system_responsibility": "Contextual scanner or quest parser determines eligibility"
+    },
+    "rank_lock": {
+      "restriction": "No soul wing formation at or after Black Gold rank",
+      "enforced": true
+    },
+    "status": "Build Mode compliant",
+    "flag": "Hook required into quest parser and breakthrough processor"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "defensive_array_system": {
+    "description": "Tracks deployable protective, illusion, and mass-scale arrays used in city defense, trial design, and player encounters.",
+    "array_types": {
+      "Protection": {
+        "behavior": "Blocks all incoming attacks until the array is broken. Outgoing attacks are unaffected.",
+        "durability_per_rank": {
+          "Bronze": 2,
+          "Silver": 4,
+          "Gold": 6,
+          "Black Gold": 8,
+          "Legendary": 10
+        },
+        "insta_break_if_opponent_above_rank": true
+      },
+      "Illusion": {
+        "behavior": "Holds targets in an illusion state unless they surpass its rank or break the array.",
+        "duration_minutes": {
+          "Bronze": 5,
+          "Silver": 10,
+          "Gold": 15,
+          "Black Gold": 20,
+          "Legendary": 25
+        },
+        "break_by_cultivation_force_if_above_rank": true
+      },
+      "Mass": {
+        "examples": [
+          "10,000 Demon Beast Array"
+        ],
+        "notes": "Special category \u2014 not limited to tiered rules. May require multiple users, inscriptions, or city-wide activation."
+      }
+    },
+    "array_knowledge_break_threshold": {
+      "Bronze": 20,
+      "Silver": 40,
+      "Gold": 60,
+      "Black Gold": 80,
+      "Legendary": 100
+    },
+    "array_knowledge_laying_threshold": {
+      "Bronze": 30,
+      "Silver": 50,
+      "Gold": 70,
+      "Black Gold": 90,
+      "Legendary": 110
+    },
+    "spiritual_god_override": {
+      "description": "Spiritual gods can exceed normal limits, enabling array knowledge of 110+ and access to divine arrays.",
+      "note": "Only the player and spiritual gods are expected to reach these levels in Tiny World."
+    },
+    "status": "Build Mode compliant",
+    "flag": "Cross-reference with cultivation ranks and array knowledge max thresholds"
+  }
+}

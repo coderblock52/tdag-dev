@@ -1,0 +1,88 @@
+{
+  "city_tier_system": {
+    "description": "Defines the capabilities, events, and unlocks associated with each city tier from Tier 1 (lowest) to Tier 10 (highest).",
+    "tiers": {
+      "Tier 1": {
+        "status": "Lowest rank",
+        "features": [
+          "No real school",
+          "No army",
+          "Completely vulnerable to demon beast waves"
+        ]
+      },
+      "Tier 2": {
+        "features": [
+          "Basic cultivation school (non-combat focused)",
+          "Low-level patrols"
+        ]
+      },
+      "Tier 3": {
+        "features": [
+          "Basic school curriculum and shops",
+          "Small militia presence",
+          "No soul walls or elemental rooms"
+        ]
+      },
+      "Tier 4": {
+        "features": [
+          "Combat-focused school",
+          "Bronze/Yellow soul cultivators become more common",
+          "Basic mission board unlocked"
+        ]
+      },
+      "Tier 5": {
+        "features": [
+          "Gold-ranked equipment accessible",
+          "Better school instructors",
+          "First major arena or public sparring events"
+        ]
+      },
+      "Tier 6": {
+        "features": [
+          "Runemasters appear (support logic activated)",
+          "Law Theory classes introduced in school",
+          "Defensive arrays unlocked",
+          "Unified Class structure in schools"
+        ]
+      },
+      "Tier 7": {
+        "features": [
+          "Black-Gold gear sold publicly",
+          "Elite-class cultivators begin returning to cities",
+          "Public cultivation towers opened"
+        ]
+      },
+      "Tier 8": {
+        "features": [
+          "Legendary gear available in elite stores",
+          "Elite quests and faction-aligned missions",
+          "Soul Wall unlocked for all students"
+        ]
+      },
+      "Tier 9": {
+        "features": [
+          "City-wide transportation arrays activated",
+          "Higher-class bloodline families establish sect roots",
+          "City Lords can access regional decree systems"
+        ]
+      },
+      "Tier 10": {
+        "status": "Capital-grade",
+        "features": [
+          "Universal Soul Wall",
+          "Named pillar clans participate in inter-realm conferences",
+          "Heavenly Fate cultivators present",
+          "Cross-realm portal access"
+        ]
+      }
+    },
+    "integration_notes": {
+      "system_interaction": [
+        "School systems and class structure shift at Tier 6",
+        "Runemaster and enhancement gear logic activates at Tier 6+",
+        "City Lords gain access to decree tools starting Tier 9"
+      ]
+    },
+    "status": "Fully defined across dev files. Ready for export and realm behavior expansion."
+  }
+}

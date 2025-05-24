@@ -1,0 +1,42 @@
+{
+  "demon_beast_generator": {
+    "fields": {
+      "soul_force": {
+        "type": "range",
+        "min": 100,
+        "max": 1000000
+      },
+      "attribute": {
+        "type": "select",
+        "$ref": "tdag_valid_attributes.json"
+      },
+      "type": {
+        "type": "select",
+        "options": [
+          "Wolf",
+          "Bear",
+          "Eagle",
+          "Dragon",
+          "Tiger",
+          "Panther"
+        ]
+      },
+      "rank": {
+        "derived_from": "soul_force",
+        "note": "Use standard cultivator rank rules"
+      },
+      "bloodline": {
+        "quality": "Derived from rank or special type",
+        "name": "Formatted using bloodline name generator"
+      },
+      "awakened_knowledge": {
+        "condition": "if bloodline_quality >= Legendary and rank >= Legendary",
+        "chance": "70%"
+      }
+    },
+    "soul_force": {
+      "generation_method": "soul_force_generator.json",
+      "notes": "Generated based on demon beast's rank and subrank using external generator"
+    }
+  }
+}

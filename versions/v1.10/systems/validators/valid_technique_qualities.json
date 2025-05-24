@@ -1,0 +1,9 @@
+{
+  "valid_technique_qualities": [
+    "Poor",
+    "Good",
+    "Great",
+    "Excellent",
+    "God"
+  ]
+}

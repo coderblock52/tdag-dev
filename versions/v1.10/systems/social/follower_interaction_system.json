@@ -1,0 +1,19 @@
+{
+  "follower_interaction_system": {
+    "description": "Handles dynamic follower bonding, conflict, and resolution events.",
+    "trigger": "bond_level_up or weekly_focus:relationship",
+    "output": "generator:follower_event_generator",
+    "filter": [
+      "bonding",
+      "conflict",
+      "resolution"
+    ],
+    "influenced_by": [
+      "archetype",
+      "focus level",
+      "location"
+    ],
+    "status": "Build Mode compliant",
+    "flag": "Cross-reference with relationship_system and event_systems"
+  }
+}

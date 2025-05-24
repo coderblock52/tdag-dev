@@ -1,0 +1,10 @@
+{
+  "description": "Calculates combat power for fighters with body rank only. No soul force or demon spirit.",
+  "base_formula": "(Body \u00d7 Rank_Modifier) \u00d7 (1 + Armor_Modifier + Weapon_Modifier)",
+  "validator_reference": "valid_body_ranks.json",
+  "modifiers": {
+    "armor_modifier": "Scaling value based on armor rank equipped to fighter",
+    "weapon_modifier": "Scaling value based on weapon rank equipped to fighter"
+  },
+  "notes": "Modifiers are placeholders pending integration with equipment system."
+}

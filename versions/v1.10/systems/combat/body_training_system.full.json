@@ -1,0 +1,36 @@
+{
+  "body_training_system": {
+    "description": "Defines the mechanics of body cultivation and training focus paths. Body strength contributes directly to combat power and can substitute for soul cultivation on certain paths.",
+    "training_conditions": {
+      "in_school": "Limited. May participate in physical sparring and basic combat drills.",
+      "out_of_school": "Full access to physical training regimens, clan-based training, bounty missions, and martial arenas."
+    },
+    "body_vs_soul_integration": {
+      "combat_formula": "Combat Power = Soul Force + Body",
+      "body_contribution_rule": "Body stat contributes 30% of the Soul Rank\u2019s power value if no soul breakthrough is present.",
+      "example": [
+        "Bronze (100 Soul Force) = 30 Combat Power from Body",
+        "Gold (10,000 Soul Force) = 3,000 Combat Power from Body"
+      ]
+    },
+    "growth_methods": {
+      "body_training_focus": [
+        "Sparring drills",
+        "Weighted cultivation poses",
+        "Solo boulder carries",
+        "Clan warrior rituals",
+        "Martial tournaments"
+      ],
+      "benefits": [
+        "Avoids 10% cultivation speed penalty from lack of breakthroughs",
+        "May trigger body-specific breakthroughs",
+        "Increases resistance to soul attacks or backlash"
+      ]
+    },
+    "integration_notes": {
+      "body_soul_consolidation": "Enhancement path that improves resistance, defense, and soul-body harmony",
+      "equipment_synergy": "Body-based fighters benefit more from armor and physical-enhancing gear than soul-based cultivators"
+    },
+    "status": "All recovered logic from dev 3 integrated. Fighter path defined separately."
+  }
+}

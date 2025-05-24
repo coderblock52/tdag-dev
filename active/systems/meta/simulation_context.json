@@ -1,0 +1,11 @@
+{
+  "current_city": "Unset",
+  "active_region": "Unset",
+  "tier_bias": "Unset",
+  "preferred_quality_roll_weights": "meta/default_roll_profiles.json",
+  "modifier_sources": [],
+  "custom_directives": {
+    "favor_cultivation_paths": [],
+    "limit_demonic_beast_quality": null
+  }
+}

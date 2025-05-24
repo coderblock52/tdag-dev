@@ -1,0 +1,19 @@
+{
+  "special_elixirs": [
+    {
+      "name": "Blood Crystal",
+      "location": "Commonly found in bloodline testing chambers, sometimes mined in ancient battlegrounds.",
+      "Quality": "Legendary"
+    },
+    {
+      "name": "Purple Smoke Stone",
+      "location": "Used by noble sects and families; often burned in inner cultivation rooms or sealed altars.",
+      "Quality": "Medium"
+    },
+    {
+      "name": "Pillar Family\u2019s Special Herb",
+      "location": "Grown exclusively within the inner estates of the Pillar Clan.",
+      "Quality": range("low" to "medium"
+    }
+  ]
+}

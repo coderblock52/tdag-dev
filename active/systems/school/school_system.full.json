@@ -1,0 +1,60 @@
+{
+  "school_system": {
+    "description": "Defines the structural, academic, and cultivation systems tied to schools based on city tier.",
+    "weekly_focus_options": {
+      "Cultivation Focus": {
+        "daily_hours": 10,
+        "effects": "Maximized Soul Force gain for students prioritizing cultivation"
+      },
+      "Balanced Focus": {
+        "daily_hours": 5,
+        "plus": "1 array knowledge per week"
+      },
+      "Array Focus": {
+        "bonus": "+3 array knowledge per week",
+        "description": "For students specializing in formation and support-type skills"
+      }
+    },
+    "class_structure_by_tier": {
+      "Tier 9\u20137": {
+        "Normal Class": "Red\u2013Orange soul color students",
+        "Genius Class": "Bronze+ cultivators or Yellow+ soul color",
+        "Rank Wall Access": "Genius Class only"
+      },
+      "Tier 6+": {
+        "Unified Class": "All students receive Soul Force assessment access",
+        "Curriculum": [
+          "Law Theory",
+          "Group Trials",
+          "Monthly Excursions"
+        ]
+      }
+    },
+    "monthly_trial_examples": {
+      "Formation Logic Test": "+2 Array Knowledge",
+      "Ranked Spar": "+0.5 Combat Experience",
+      "Soul Force Assessment": "Triggers if breakthrough detected; may reward recognition, items, or status",
+      "Elemental Challenge Room": {
+        "bonus": "Small cultivation buff",
+        "notes": "Does NOT affect soul form or attribute"
+      }
+    },
+    "cultivation_limitations": {
+      "rule": "City-locked schools impose daily cultivation limits",
+      "integration": "Shared pool of hours between training, school lessons, and exploration"
+    },
+    "exploration_unlocks": {
+      "Tier <6": "Restricted to school region",
+      "Tier 6+": "School-led excursions and supervised ruin/beast field access"
+    },
+    "discipline_notes": {
+      "class_advancement": [
+        "Test performance",
+        "Ranked combat trials",
+        "Instructor discretion"
+      ],
+      "expulsion_rules": "Mentioned, but not defined \u2014 flagged for expansion"
+    },
+    "status": "All currently defined behavior embedded. Punishment logic and class rebellion triggers need expansion."
+  }
+}

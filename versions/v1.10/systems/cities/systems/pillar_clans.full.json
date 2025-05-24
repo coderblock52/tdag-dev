@@ -1,0 +1,40 @@
+{
+  "pillar_clan_system": {
+    "description": "Defines the behavior and political role of pillar clans. Pillar clans hold authority within city walls, influence City Lord policies, and may trigger rebellion if loyalty collapses.",
+    "structure": {
+      "per_city": "Each major city may have 2\u20136 pillar clans, depending on city tier and history.",
+      "role": [
+        "Advise or challenge City Lord decrees",
+        "Control key resource zones (e.g., mines, arrays, auction halls)",
+        "Petition for elite positions, sect favor, or expedition rights"
+      ]
+    },
+    "loyalty_mechanics": {
+      "scale": "0%\u2013100%",
+      "loyalty_drops_from": [
+        "Ignored proposals",
+        "Decrees that hurt clan interests",
+        "Loss of face in public conflict",
+        "Favoritism toward rival clans"
+      ],
+      "consequences_of_0%": [
+        "Assassination attempt",
+        "Clan secession (new faction event)",
+        "Civil unrest or beast release"
+      ],
+      "status": "Loyalty system confirmed but betrayal event triggers must be fully implemented"
+    },
+    "city_example": {
+      "Glory City": {
+        "pillar_clans": 4,
+        "named_clans": "Not defined",
+        "notes": "City has a 4-clan balance system tied to elite authority and decree influence"
+      }
+    },
+    "integration_notes": {
+      "link_to_city_lord": "City Lord survival often interacts with maintaining at least 2/4 pillar clan loyalty",
+      "clan_vs_clan_conflict": "High potential for story arcs, sabotage, or war declarations"
+    },
+    "export_status": "All structural behavior is embedded. Requires user-defined named clans for full generator and narrative expansion."
+  }
+}

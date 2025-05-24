@@ -1,0 +1,54 @@
+{
+  "law_small_realms": {
+    "description": "Each Law Realm has a corresponding small realm named directly after the law it embodies.",
+    "realms": [
+      {
+        "name": "Fire Realm"
+      },
+      {
+        "name": "Ice Realm"
+      },
+      {
+        "name": "Thunder Realm"
+      },
+      {
+        "name": "Earth Realm"
+      },
+      {
+        "name": "Wind Realm"
+      },
+      {
+        "name": "Life Realm"
+      },
+      {
+        "name": "Death Realm"
+      },
+      {
+        "name": "Neutral Realm"
+      },
+      {
+        "name": "Darkness Realm"
+      },
+      {
+        "name": "Water Realm"
+      },
+      {
+        "name": "Light Realm"
+      },
+      {
+        "name": "Lava Realm"
+      },
+      {
+        "name": "Wind-Lightning Realm"
+      },
+      {
+        "name": "Lightning-Fire Realm"
+      },
+      {
+        "name": "Nether Realm"
+      }
+    ],
+    "status": "Build Mode compliant",
+    "flag": "None"
+  }
+}

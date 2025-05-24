@@ -1,0 +1,48 @@
+{
+  "soul_form_generator": {
+    "structure": {
+      "base_types": [
+        "Beast",
+        "Flame",
+        "Serpent",
+        "Dragon",
+        "Storm",
+        "Spirit",
+        "Phoenix",
+        "Tiger",
+        "Lotus"
+      ],
+      "elements": [
+        "Fire",
+        "Wind",
+        "Thunder",
+        "Ice",
+        "Void",
+        "Light",
+        "Darkness",
+        "Lava",
+        "Water"
+      ],
+      "rarity_tiers": [
+        "Common",
+        "Uncommon",
+        "Rare",
+        "Epic",
+        "Legendary"
+      ]
+    },
+    "generation_logic": "Element + Base Type (e.g., Ice Lotus, Thunder Serpent)",
+    "attributes_randomized": [
+      "soul_color",
+      "growth_potential",
+      "innate skill bonus"
+    ],
+    "status": "Build Mode compliant",
+    "flag": "None",
+    "attribute": {
+      "type": "select",
+      "$ref": "tdag_valid_attributes.json",
+      "note": "Randomly selects a valid attribute from the central list."
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "description": "Hardcoded named bloodlines with unique traits and lore origins. Refer to valid_bloodline_qualities.json for quality validation.",
+  "named_bloodlines": [
+    {
+      "name": "Silver Winged Bloodline",
+      "quality": "Rare",
+      "origin": null,
+      "special_traits": [],
+      "notes": "Confirmed in simulation prompt",
+      "restricted_to": []
+    },
+    {
+      "name": "Black Dragon Bloodline",
+      "quality": "Earthen Draconic",
+      "origin": null,
+      "special_traits": [],
+      "notes": "Despite having wings, it is treated as an Earthly bloodline due to body enhancement bias",
+      "restricted_to": []
+    }
+  ],
+  "validator_reference": "valid_bloodline_qualities.json"
+}

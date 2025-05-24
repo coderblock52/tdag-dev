@@ -1,0 +1,42 @@
+{
+  "cultivation_arrays": {
+    "description": "Arrays are structured spiritual formations used to modify environmental effects in cultivation, defense, or trials.",
+    "types": {
+      "Cultivation Array": {
+        "purpose": "Enhances soul force absorption or technique comprehension during meditation.",
+        "use_cases": [
+          "School elemental training rooms",
+          "City-provided public cultivation fields",
+          "Personal clan or sect vaults"
+        ]
+      },
+      "Formation Array (School)": {
+        "purpose": "Used to test student knowledge of array logic, positioning, and spiritual diagramming.",
+        "known_applications": [
+          "Monthly formation tests",
+          "+2 Array Knowledge if passed",
+          "Sect-affiliated school curriculum"
+        ]
+      },
+      "Defensive Array (City)": {
+        "purpose": "Protects cities from beast tides, assassins, or invaders.",
+        "activation_conditions": [
+          "Requires runemaster presence (Tier 6+)",
+          "Powered by city formation core"
+        ],
+        "integration": "May be enhanced by City Lord decree or pillar clan support"
+      }
+    },
+    "enhancement_status": {
+      "array_effect_table": "Not yet implemented. Effects, symbols, and range values to be defined.",
+      "flag": "Requires expansion"
+    },
+    "integration_notes": {
+      "linked_systems": [
+        "Runemaster enhancements",
+        "School monthly trials",
+        "City lord control at Tier 6+"
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "description": "Tracks combat experience system and milestone triggers.",
+  "levels": [
+    {
+      "threshold": 70,
+      "trait": "Second Instinct",
+      "effects": [
+        "Enhanced awareness during exploration or patrol",
+        "Ability to sense incoming ambushes or hidden dangers",
+        "May allow rerolling or modifying ambush outcomes or event triggers"
+      ]
+    }
+  ],
+  "status": "Build Mode compliant",
+  "flag": "None"
+}

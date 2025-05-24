@@ -1,0 +1,38 @@
+{
+  "enhancement_sources": {
+    "description": "Defines item and gear enhancement sources from demon beast parts and runemaster infusions.",
+    "beast_part_enhancements": {
+      "types": [
+        "Claws",
+        "Scales",
+        "Cores",
+        "Bones",
+        "Blood"
+      ],
+      "uses": [
+        "Add elemental affinity (e.g., fire scale for fire resistance)",
+        "Reinforce armor (bones, scales)",
+        "Infused equipment become the rank of the demon beast part that was used to make it"
+      ]
+    },
+    "runemaster_enhancements": {
+      "types": [
+        "Inscription",
+        "Sealwork",
+        "Array Embedding"
+      ],
+      "effects": [
+        "Weapon speed boost",
+        "Soul armor resistance",
+        "Damage amplification against aligned enemies"
+      ],
+      "restrictions": "Available in cities of Tier 6 and above only"
+    },
+    "status": "Build Mode compliant",
+    "flag": "None"
+  },
+  "combat_system_integration": {
+    "status": "Linked",
+    "reference": "combat/combat_calculation.full.json"
+  }
+}

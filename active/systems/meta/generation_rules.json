@@ -1,0 +1,14 @@
+{
+  "clans": {
+    "max_children": 5,
+    "min_strength": "Silver",
+    "allowed_bloodlines": [
+      "Royal",
+      "Legendary"
+    ]
+  },
+  "demon_beasts": {
+    "limit_by_region": true,
+    "regional_rules": {}
+  }
+}

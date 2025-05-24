@@ -1,0 +1,42 @@
+{
+  "integration_eligibility": {
+    "minimum_rank_required": "Silver",
+    "maximum_rank_gap": 2,
+    "description": "Cultivators must be Silver rank or higher to integrate demon spirits, and cannot integrate spirits more than 2 ranks above their own."
+  },
+  "cultivation_speed_modifiers": {
+    "same_rank": 0.1,
+    "one_rank_above": 1.0,
+    "two_or_more_ranks_above": "Integration blocked"
+  },
+  "growth_rate_bonus": {
+    "Poor": 0.0,
+    "Good": 0.05,
+    "Great": 0.1,
+    "Excellent": 0.2,
+    "God": 0.3
+  },
+  "status": "Build Mode compliant",
+  "flag": "None",
+  "demon_spirit_cultivation_focus": {
+    "description": "Allows cultivator to redirect cultivation efforts to the integrated demon spirit.",
+    "requirements": [
+      "Must be Silver rank or higher",
+      "Must have an integrated demon spirit"
+    ],
+    "efficiency_by_growth_rate": {
+      "Poor": 0.25,
+      "Good": 0.5,
+      "Great": 1.0,
+      "Excellent": 2.0,
+      "God": 3.0
+    },
+    "application": "Final cultivation speed (after all modifiers) is multiplied by this factor and applied to the demon spirit instead of the cultivator.",
+    "restrictions": {
+      "spirit_rank_cap": "Spirit cannot exceed cultivator's rank without triggering evolution events.",
+      "spirit_energy_sink": "No cultivation benefit to cultivator while focusing on the spirit."
+    },
+    "status": "Build Mode compliant",
+    "flag": "Linked to cultivation speed calculation"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Merged demon spirit contribution to combat power for cultivators.",
+  "base_formula": "Soul_Force \u00d7 (1 + Growth_Rate_Modifier + 0.5 \u00d7 Bloodline_Modifier) \u00d7 0.60",
+  "validator_reference": "valid_bloodline_qualities.json",
+  "notes": "Soul_Force refers to the base soul force of the demon beast the spirit was formed from. Contribution is capped at 60%.",
+  "variables": {
+    "Soul_Force": "Base soul force of the demon beast prior to becoming a spirit",
+    "Growth_Rate_Modifier": "Cultivation growth rate of the demon spirit (e.g., 0.15 for Great)",
+    "Bloodline_Modifier": "Modifier from beast\u2019s bloodline quality"
+  }
+}

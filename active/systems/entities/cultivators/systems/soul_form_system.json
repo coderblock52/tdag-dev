@@ -1,0 +1,85 @@
+{
+  "soul_form_system": {
+    "description": "Defines soul form types, their effects, element interactions, and mutation behavior.",
+    "types": [
+      {
+        "name": "Red Sun",
+        "element": "Fire",
+        "bonuses": [
+          "+10% cultivation speed with fire techniques",
+          "faster law comprehension"
+        ]
+      },
+      {
+        "name": "Frozen Thorn",
+        "element": "Ice",
+        "bonuses": [
+          "Reduces spiritual energy drain",
+          "High cold resistance"
+        ]
+      },
+      {
+        "name": "Heavenly Marks",
+        "element": "Neutral (special)",
+        "bonuses": [
+          "+150% cultivation speed with Physique of Heavenly Marks"
+        ]
+      },
+      {
+        "name": "Stone Warden",
+        "element": "Earth",
+        "bonuses": [
+          "+20% body strength in combat",
+          "Boosts defense"
+        ]
+      },
+      {
+        "name": "Violet Raven",
+        "element": "Wind/Shadow",
+        "bonuses": [
+          "Improved dodge/evasion",
+          "Stealth enhancement in exploration"
+        ]
+      },
+      {
+        "name": "Sky Bloom Lotus",
+        "element": "Water/Nature",
+        "bonuses": [
+          "Passive soul force regeneration",
+          "Affinity with herbs and cultivation environments"
+        ]
+      },
+      {
+        "name": "Iron Fang Wolf",
+        "element": "Neutral (Beast)",
+        "bonuses": [
+          "Physical combat boost",
+          "Synergy with beast-based gear"
+        ]
+      },
+      {
+        "name": "Scattered Soul Form",
+        "element": "Neutral",
+        "bonuses": [
+          "Adapts to technique type",
+          "5% chance to mutate into legendary soul form"
+        ]
+      }
+    ],
+    "elemental_synergy": {
+      "standard": "+10% cultivation speed if element matches technique or law",
+      "rare_match": "+15% for rare element matches (Chaos, Heavenly, etc.)"
+    },
+    "mutation": {
+      "condition": "Soul form evolves with law resonance, breakthrough, or repeated combat",
+      "examples": [
+        "Scattered Soul Form becoming Law Soul"
+      ]
+    },
+    "law_matching": {
+      "spiritual_god_trigger": "Soul form changes to match absorbed law fragment"
+    },
+    "status": "Build Mode compliant",
+    "flag": "Connect to generator and cultivation logic"
+  }
+}

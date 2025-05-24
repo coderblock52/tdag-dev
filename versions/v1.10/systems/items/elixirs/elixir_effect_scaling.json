@@ -1,0 +1,76 @@
+{
+  "rules": {
+   "Poor": {
+      "full_effect": [
+        "Unranked",
+        "Bronze",
+        "Silver"
+      ],
+      "half_effect": [
+        "Gold"
+      ],
+      "no_effect": [
+        "Black Gold",
+        "Legendary"
+      ]
+    },
+    "Low": {
+      "full_effect": [
+        "Unranked",
+        "Bronze",
+        "Silver"
+      ],
+      "half_effect": [
+        "Gold"
+      ],
+      "no_effect": [
+        "Black Gold",
+        "Legendary"
+      ]
+    },
+    "Medium": {
+      "full_effect": [
+        "Unranked",
+        "Bronze",
+        "Silver",
+        "Gold"
+      ],
+      "half_effect": [
+        "Black Gold"
+      ],
+      "no_effect": [
+        "Legendary"
+      ]
+    },
+    "High": {
+      "full_effect": [
+        "Unranked",
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Black Gold"
+      ],
+      "half_effect": [
+        "Legendary"
+      ],
+      "no_effect": []
+    },
+    "Legendary": {
+      "full_effect": [
+        "Unranked",
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Black Gold",
+        "Legendary"
+      ],
+      "half_effect": [],
+      "no_effect": []
+    }
+  },
+  "applies_to": {
+    "cultivation_elixirs": "soul_rank",
+    "body_elixirs": "body_rank",
+    "special_elixirs": "assigned_rank"
+  }
+}

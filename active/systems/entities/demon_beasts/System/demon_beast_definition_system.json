@@ -1,0 +1,19 @@
+{
+  "demon_beast_definition": {
+    "fields": {
+      "soul_force": "Integer; determines rank via cultivator rules",
+      "rank": "Derived from soul_force using standard rank thresholds",
+      "attribute": "Must be from valid attribute list (e.g., Fire, Water, Neutral)",
+      "bloodline": {
+        "quality": "Matches bloodline system (e.g., Common, Rare, Legendary)",
+        "name_format": "[Quality] + [Special Name] + [Type] + ' Bloodline'"
+      },
+      "type": "Species type (e.g., wolf, eagle, dragon)",
+      "awakened_knowledge": {
+        "condition": "Only applies if bloodline is Legendary+ AND rank is Legendary+",
+        "chance": "70%"
+      }
+    },
+    "notes": "This defines all fields a valid demon beast must have."
+  }
+}

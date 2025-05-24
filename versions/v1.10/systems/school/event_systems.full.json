@@ -1,0 +1,30 @@
+{
+  "event_systems": {
+    "description": "Handles student, follower, and story progression events within schools, clans, and patrol life.",
+    "categories": {
+      "School Events": [
+        "Monthly Trials",
+        "Rank Advancement Test",
+        "Formation Array Quiz",
+        "Guest Instructor Lecture"
+      ],
+      "Camp Events": [
+        "Night Beast Patrol",
+        "Campfire Bonding",
+        "Herb Gathering Mission",
+        "Trap Trigger Survival Trial"
+      ],
+      "Follower Events": [
+        "Confession Scene",
+        "Betrayal Trigger",
+        "Soul Bond Revelation"
+      ]
+    },
+    "status": "Build Mode compliant",
+    "flag": "Expansion suggested per region and school tier"
+  },
+  "combat_system_integration": {
+    "status": "Linked",
+    "reference": "combat/combat_calculation.full.json"
+  }
+}

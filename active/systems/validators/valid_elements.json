@@ -1,0 +1,16 @@
+{
+  "valid_attributes": [
+    "Fire",
+    "Water",
+    "Earth",
+    "Wind",
+    "Lightning",
+    "Ice",
+    "Wood",
+    "Poison",
+    "Shadow",
+    "Chaos",
+    "Neutral",
+    "Void"
+  ]
+}

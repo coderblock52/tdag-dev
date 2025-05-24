@@ -1,0 +1,11 @@
+{
+  "description": "Calculates per-unit combat power for cultivator armies.",
+  "formula": "Soul Force + Merged Spirit Power + Body + Equipment + 10% Group Combat Bonus",
+  "assumptions": [
+    "Body = 30% of soul force baseline value",
+    "Equipment = matching rank value from equipment system",
+    "Merged Spirit Power = 60% of beast power (assumes matching-rank merge)"
+  ],
+  "notes": "Fighters have Soul Force = 0 and Merged Spirit Power = 0",
+  "validator_reference": "valid_soul_ranks.json"
+}

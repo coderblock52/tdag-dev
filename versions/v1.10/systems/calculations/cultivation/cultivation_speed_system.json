@@ -1,0 +1,9 @@
+{
+  "includes": [
+    "core_modifiers.json",
+    "technique_synergy_modifiers.json",
+    "demon_beast_synergy_modifiers.json",
+    "item_modifiers.json",
+    "environmental_modifiers.json"
+  ]
+}

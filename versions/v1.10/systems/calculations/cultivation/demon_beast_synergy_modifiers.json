@@ -1,0 +1,29 @@
+{
+  "demon_beast_blood_modifier": {
+    "description": "\u00bd of normal bloodline modifier",
+    "example": "Legendary = +35%"
+  },
+  "demon_beast_rank_modifier": {
+    "rules": [
+      {
+        "condition": "beast_rank <= cultivator_rank",
+        "bonus": 0.1
+      },
+      {
+        "condition": "beast_rank > cultivator_rank",
+        "bonus": 1.0
+      }
+    ]
+  },
+  "demon_beast_growth_modifier": {
+    "Poor": 0.0,
+    "Good": 0.05,
+    "Great": 0.15,
+    "Excellent": 0.3,
+    "God": 0.4
+  },
+  "demon_beast_attribute_match_modifier": {
+    "condition": "demon_beast_attribute == soul_form_attribute",
+    "bonus": 0.1
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "To be generated (see enhancement checklist)",
+  "quality": {
+    "source": "valid_technique_qualities.json",
+    "selected": null
+  },
+  "soul_force_per_hour": "Defined by quality tier",
+  "purity": "Rolled based on quality tier range",
+  "element": {
+    "source": "valid_elements.json",
+    "selected": null
+  },
+  "tier_mapping": {
+    "Poor": {
+      "soul_force_per_hour": 0.005,
+      "purity_range": [
+        1,
+        3
+      ]
+    },
+    "Good": {
+      "soul_force_per_hour": 0.08,
+      "purity_range": [
+        3,
+        5
+      ]
+    },
+    "Great": {
+      "soul_force_per_hour": 0.2,
+      "purity_range": [
+        5,
+        7
+      ]
+    },
+    "Excellent": {
+      "soul_force_per_hour": 1.7,
+      "purity_range": [
+        7,
+        9
+      ]
+    },
+    "God": {
+      "soul_force_per_hour": 2.3,
+      "purity_range": [
+        9,
+        10
+      ]
+    }
+  },
+  "quality_roll_weights": {
+    "default": {
+      "Poor": 45,
+      "Good": 43,
+      "Great": 10,
+      "Excellent": 2,
+      "God": 0
+    },
+    "description": "Callers can override this structure with custom weights for context-specific generation (e.g., regions, clans, city tier)"
+  }
+}
