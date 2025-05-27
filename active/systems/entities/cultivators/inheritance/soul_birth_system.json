@@ -1,0 +1,43 @@
+{
+  "soul_birth_system": {
+    "description": "Determines inherited soul form and bloodline based on parent qualities during birth events.",
+    "trigger": "birth of a new cultivator (NPC or player child)",
+    "inheritance_rules": {
+      "soul_form": {
+        "source": "systems/generators/soul_form_generator.json",
+        "inheritance_logic": {
+          "element": {
+            "inherit_from_highest_quality_parent": 0.8,
+            "fallback_inherit_from_other_parent": 0.5,
+            "random_if_both_fail": true
+          },
+          "rarity": {
+            "inherit_from_highest_quality_parent": 0.8,
+            "fallback_inherit_from_other_parent": 0.5,
+            "random_if_both_fail": true
+          },
+          "equal_quality_logic": {
+            "equal_chance_of_either": true,
+            "guaranteed_inheritance": true
+          }
+        }
+      },
+      "bloodline": {
+        "inheritance_logic": {
+          "inherit_from_highest_quality_parent": 0.8,
+          "fallback_inherit_from_other_parent": 0.5,
+          "equal_quality_logic": {
+            "equal_chance_of_either": true,
+            "guaranteed_inheritance": true
+          },
+          "random_if_both_common": false
+        }
+      }
+    },
+    "status": "Build Mode compliant",
+    "assign_to": [
+      "soul_form",
+      "bloodline"
+    ]
+  }
+}
