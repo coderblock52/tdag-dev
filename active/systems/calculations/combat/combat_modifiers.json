@@ -1,8 +1,0 @@
-{
-  "energy_type_bonus": {
-    "Law Energy": 0.25,
-    "Heavenly Energy": 0.5
-  },
-  "soul_form_bonus": "Varies from +20% to +300% depending on compatibility and form",
-  "notes": "Shared modifiers for all combatant types. Centralized here for reuse."
-}

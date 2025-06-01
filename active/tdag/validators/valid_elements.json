@@ -1,0 +1,24 @@
+{
+  "id": "valid_elements",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid elements.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T06:05:23Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "None",
+    "Fire",
+    "Water",
+    "Wind",
+    "Lightning",
+    "Ice",
+    "Poison",
+    "Chaos",
+    "Void",
+    "Snow-Wind",
+    "Lightning-Fire",
+    "Wind-Lightning"
+  ]
+}

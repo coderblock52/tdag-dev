@@ -1,0 +1,10 @@
+{
+  "id": "example_file_id",
+  "type": "define_file_purpose_here",
+  "origin": "define_origin_system_or_module",
+  "description": "Short explanation of what this file is for.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T05:27:38Z",
+  "tags": [],
+  "linked_files": []
+}

@@ -1,0 +1,23 @@
+{
+  "validator_name": "law_realms_validator",
+  "description": "Validates possible law realms that can be referenced by cultivators or assigned to elite demon beasts.",
+  "valid_law_realms": [
+   "Fire",
+    "Ice",
+    "Thunder",
+    "Earth",
+    "Wind",
+    "Life",
+    "Death",
+    "Earth",
+    "Darkness",
+    "Water",
+    "Light",
+    "Lava",
+    "Wind-Lightning",
+    "Lightning-Fire",
+    "Nether",
+    "Snow-Wind"
+  ],
+  "source_reference": ""
+}

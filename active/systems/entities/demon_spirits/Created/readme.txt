@@ -1,1 +1,0 @@
-this is for demon spirits that I the user have defined who may not be found as a demon beast, but just their spirit

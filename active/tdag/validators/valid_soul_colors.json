@@ -1,0 +1,18 @@
+{
+  "id": "valid_soul_colors",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid soul colors.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T05:59:17Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "Red",
+    "Orange",
+    "Yellow",
+    "Green",
+    "Cyan",
+    "Purple"
+  ]
+}

@@ -1,10 +1,14 @@
 {
   "valid city tiers": [
+    "Tier 10",
+    "Tier 9",
+    "Tier 8",
+    "Tier 7",
+    "Tier 6",
     "Tier 5",
     "Tier 4",
     "Tier 3",
     "Tier 2",
     "Tier 1",
-    "Capital"
   ]
 }

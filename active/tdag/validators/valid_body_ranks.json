@@ -1,0 +1,22 @@
+{
+  "id": "valid_body_ranks",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid body ranks.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T05:59:17Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "Bronze",
+    "Silver",
+    "Gold",
+    "Black Gold",
+    "Legendary",
+    "Heavenly Fate",
+    "Heavenly Star",
+    "Heavenly Axis",
+    "Dao of Dragon",
+    "Martial Ancestor"
+  ]
+}

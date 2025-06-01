@@ -1,0 +1,17 @@
+{
+  "id": "valid_growth_rates",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid growth rates.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T05:59:17Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "Poor",
+    "Good",
+    "Great",
+    "Excellent",
+    "God"
+  ]
+}

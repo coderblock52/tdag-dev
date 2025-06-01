@@ -1,14 +1,6 @@
 {
-  "realm_count": 14,
+  "realm_count": 17,
   "note": "Each Law Realm corresponds directly to a Law. This system defines realms used for cultivation, law comprehension, and spiritual progression.",
-  "removed_laws": [
-    "Time",
-    "Space"
-  ],
-  "void_status": {
-    "description": "Void is no longer a standalone law or realm.",
-    "integration": "Now treated as a subcategory under the Neutral law and fully compatible with Neutral-aligned techniques, soul forms, and cultivators."
-  },
   "confirmed_laws": [
     "Fire",
     "Ice",
@@ -25,7 +17,8 @@
     "Wind-Lightning",
     "Lightning-Fire",
     "Nether",
-    "Snow-Wind"
+    "Snow-Wind",
+    "Chaos"
   ],
   "realm_behavior": {
     "access_methods": [
@@ -45,42 +38,50 @@
   },
   "law_attributes": {
     "Fire": [
-      "Fire"
+      "Fire",
+      "Lightning-Fire"
     ],
     "Ice": [
-      "Ice"
+      "Ice",
+      "Snow-Wind"
     ],
     "Thunder": [
-      "Thunder"
+      "Lightning",
+      "Lightning-Fire",
+      "Wind-Lightning"
     ],
     "Earth": [
-      "Earth"
+      "Neutral"
     ],
     "Wind": [
-      "Wind"
+      "Wind",
+      "Wind-Lightning"
     ],
     "Life": [
       "Light"
     ],
     "Death": [
-      "Darkness"
+      "Void",
+      "Chaos"
     ],
     "Darkness": [
-      "Darkness"
+      "Void"
     ],
     "Water": [
       "Water"
     ],
     "Light": [
-      "Light"
+      "Neutral"
     ],
     "Lava": [
       "Fire",
-      "Earth"
+      "Earth",
+      "Lightning-Fire"
     ],
     "Wind-Lightning": [
       "Wind",
-      "Thunder"
+      "Lightning",
+      "Wind-Lightning"
     ],
     "Lightning-Fire": [
       "Thunder",
@@ -88,12 +89,15 @@
     ],
     "Nether": [
       "Void",
-      "Darkness"
+      "Chaos"
     ],
     "Snow-Wind": [
       "Ice",
-      "Wind"
+      "Wind",
+      "Snow-Wind"
     ]
+    "Chaos": [
+      "Chaos"
+]
   },
-  "laws": []
 }

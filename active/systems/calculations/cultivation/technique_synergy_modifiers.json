@@ -1,6 +1,0 @@
-{
-  "soul_form_technique_match_modifier": {
-    "condition": "technique_attribute == soul_form_attribute",
-    "bonus": 0.15
-  }
-}

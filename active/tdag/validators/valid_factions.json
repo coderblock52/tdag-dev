@@ -1,0 +1,11 @@
+{
+  "id": "valid_factions",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid factions.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T05:59:17Z",
+  "tags": [],
+  "linked_files": [],
+  "values": []
+}

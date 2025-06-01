@@ -1,16 +1,17 @@
 {
+  "validator_name": "valid_elements"
   "valid_attributes": [
+    "None",
     "Fire",
     "Water",
-    "Earth",
     "Wind",
     "Lightning",
     "Ice",
-    "Wood",
     "Poison",
-    "Shadow",
     "Chaos",
-    "Neutral",
-    "Void"
+    "Void",
+    "Snow-Wind",
+    "Lightning-Fire",
+    "Wind-Lightning
   ]
 }

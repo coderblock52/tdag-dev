@@ -1,0 +1,16 @@
+{
+  "id": "valid_pill_qualities",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid pill qualities.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T05:59:17Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "Low",
+    "Medium",
+    "High",
+    "Legendary"
+  ]
+}

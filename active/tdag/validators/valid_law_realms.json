@@ -1,0 +1,28 @@
+{
+  "id": "law_realms_validator",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid law realms.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T05:59:17Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "Fire",
+    "Ice",
+    "Thunder",
+    "Earth",
+    "Wind",
+    "Life",
+    "Death",
+    "Earth",
+    "Darkness",
+    "Water",
+    "Light",
+    "Lava",
+    "Wind-Lightning",
+    "Lightning-Fire",
+    "Nether",
+    "Snow-Wind"
+  ]
+}

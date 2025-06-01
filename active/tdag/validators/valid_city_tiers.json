@@ -1,0 +1,22 @@
+{
+  "id": "valid_city_tiers",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator file for valid city tiers.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T06:04:14Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "Tier 10",
+    "Tier 9",
+    "Tier 8",
+    "Tier 7",
+    "Tier 6",
+    "Tier 5",
+    "Tier 4",
+    "Tier 3",
+    "Tier 2",
+    "Tier 1"
+  ]
+}
