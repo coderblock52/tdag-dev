@@ -18,7 +18,7 @@
   ],
   "fields": {
     "name": "string",
-    "technique_id": "string (references cultivation technique)",
+    "family": "string",
     "current_rank": {
       "major": "string (e.g., 'Bronze', 'Silver')",
       "minor": "int (e.g., 1, 2, 3)"
@@ -28,6 +28,8 @@
       "cultivation_speed": "float",
       "body_speed": "float"
     },
+    "active_technique_id": "string (references an item in cultivation/techniques)",
+    "known_techniques": "array[string]",
     "soul": {
       "color": "string (references soul/attributes/soul_colors.json)",
       "form": "string (references soul/attributes/soul_forms.json)",
@@ -36,13 +38,12 @@
     },
     "stats": {
       "soul_force": "int",
-      "body_power": "int"
+      "body_power": "int",
+      "array_knowledge": "int"
     },
     "tags": [
       "optional list of traits or affiliations"
     ],
-    "active_technique_id": "string (references an item in cultivation/techniques)",
-    "known_techniques": "array[string]",
     "equipment": {
       "weapon": "string (path to equipped weapon, or null)",
       "armor": "string (path to equipped armor, or null)",
