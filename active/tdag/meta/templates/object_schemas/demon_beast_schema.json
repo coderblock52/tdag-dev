@@ -16,7 +16,7 @@
   ],
   "fields": {
     "name": "string (typically generated dynamically, may include element)",
-    "rank": {
+    "soul_rank": {
       "major": "string (e.g., 'Bronze', 'Silver')",
       "minor": "int (e.g., 1, 2, 3)"
     },
