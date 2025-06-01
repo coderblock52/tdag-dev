@@ -1,0 +1,26 @@
+{
+  "name": "",
+  "soul_color": "",
+  "soul_form": "",
+  "soul_element": "",
+  "technique_id": "",
+  "current_stage": "",
+  "merged_spirit_ref": null,
+  "modifiers": {
+    "cultivation_speed": 1.0,
+    "body_speed": 1.0
+  },
+  "stats": {
+    "soul_force": 0,
+    "body_power": 0
+  },
+  "tags": [],
+  "active_technique_id": "",
+  "known_techniques": [],
+  "equipment": {
+    "weapon": null,
+    "armor": null,
+    "ring": null
+  },
+  "inventory": []
+}

@@ -1,0 +1,53 @@
+{
+  "id": "cultivator_schema",
+  "type": "schema",
+  "origin": "template",
+  "description": "Defines the structure and expected fields of a cultivator profile.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T07:45:31Z",
+  "tags": [
+    "structure",
+    "schema"
+  ],
+  "linked_files": [
+    "soul/attributes/soul_colors.json",
+    "soul/attributes/soul_forms.json",
+    "soul/attributes/soul_elements.json",
+    "soul/attributes/soul_bloodlines.json",
+    "soul/modifiers/bloodline_modifiers.json"
+  ],
+  "fields": {
+    "name": "string",
+    "technique_id": "string (references cultivation technique)",
+    "current_rank": {
+      "major": "string (e.g., 'Bronze', 'Silver')",
+      "minor": "int (e.g., 1, 2, 3)"
+    },
+    "merged_spirit_ref": "string (path to merged spirit profile)",
+    "modifiers": {
+      "cultivation_speed": "float",
+      "body_speed": "float"
+    },
+    "soul": {
+      "color": "string (references soul/attributes/soul_colors.json)",
+      "form": "string (references soul/attributes/soul_forms.json)",
+      "element": "string (references soul/attributes/soul_elements.json)",
+      "bloodline": "string (references soul/attributes/soul_bloodlines.json)"
+    },
+    "stats": {
+      "soul_force": "int",
+      "body_power": "int"
+    },
+    "tags": [
+      "optional list of traits or affiliations"
+    ],
+    "active_technique_id": "string (references an item in cultivation/techniques)",
+    "known_techniques": "array[string]",
+    "equipment": {
+      "weapon": "string (path to equipped weapon, or null)",
+      "armor": "string (path to equipped armor, or null)",
+      "ring": "string (path to equipped ring, or null)"
+    },
+    "inventory": "array of objects with { item_id: string, quantity: int }"
+  }
+}

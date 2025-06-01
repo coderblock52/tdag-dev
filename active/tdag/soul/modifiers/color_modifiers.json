@@ -1,0 +1,7 @@
+{
+  "id": "color_modifiers",
+  "type": "modifier",
+  "origin": "soul",
+  "description": "Cultivation speed modifiers based on soul color (cultivators only).",
+  "modifiers": {}
+}

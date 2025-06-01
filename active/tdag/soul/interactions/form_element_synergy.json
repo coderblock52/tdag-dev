@@ -1,0 +1,7 @@
+{
+  "id": "form_element_synergy",
+  "type": "interaction_matrix",
+  "origin": "soul",
+  "description": "Defines synergy bonuses or penalties between soul form and element.",
+  "interactions": []
+}

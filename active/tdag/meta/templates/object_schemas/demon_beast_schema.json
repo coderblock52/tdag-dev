@@ -1,0 +1,29 @@
+{
+  "id": "demon_beast_schema",
+  "type": "schema",
+  "origin": "template",
+  "description": "Defines the structure and expected fields of a demon beast profile.",
+  "version": "1.0",
+  "last_updated": "2025-06-01T07:38:17Z",
+  "tags": [
+    "structure",
+    "schema"
+  ],
+  "linked_files": [
+    "soul/attributes/soul_elements.json",
+    "soul/attributes/soul_bloodlines.json",
+    "soul/modifiers/bloodline_modifiers.json"
+  ],
+  "fields": {
+    "name": "string (typically generated dynamically, may include element)",
+    "rank_major": "string (major only, e.g., 'Bronze')",
+    "animal_type": "string (validated via valid_animal_types)",
+    "stats": {
+      "soul_force": "int"
+    },
+    "soul": {
+      "element": "string (references soul/attributes/soul_elements.json)",
+      "bloodline": "string (references soul/attributes/soul_bloodlines.json)"
+    }
+  }
+}
