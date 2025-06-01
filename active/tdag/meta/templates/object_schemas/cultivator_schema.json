@@ -19,9 +19,12 @@
   "fields": {
     "name": "string",
     "family": "string",
-    "current_rank": {
+    "soul_rank": {
       "major": "string (e.g., 'Bronze', 'Silver')",
       "minor": "int (e.g., 1, 2, 3)"
+    },
+    "body_rank": {
+        "major": "string (e.g., 'Bronze')
     },
     "merged_spirit_ref": "string (path to merged spirit profile)",
     "modifiers": {
@@ -38,7 +41,7 @@
     },
     "stats": {
       "soul_force": "int",
-      "body_power": "int",
+      "body_force": "int",
       "array_knowledge": "int"
     },
     "tags": [
