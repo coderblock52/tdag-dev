@@ -16,7 +16,10 @@
   ],
   "fields": {
     "name": "string (typically generated dynamically, may include element)",
-    "rank_major": "string (major only, e.g., 'Bronze')",
+    "rank": {
+      "major": "string (e.g., 'Bronze', 'Silver')",
+      "minor": "int (e.g., 1, 2, 3)"
+    },
     "animal_type": "string (validated via valid_animal_types)",
     "stats": {
       "soul_force": "int"
