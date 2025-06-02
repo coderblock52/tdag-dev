@@ -24,7 +24,7 @@
       "minor": "int (e.g., 1, 2, 3)"
     },
     "body_rank": {
-        "major": "string (e.g., 'Bronze')
+        "major": "string (e.g., 'Bronze')"
     },
     "merged_spirit_ref": "string (path to merged spirit profile)",
     "modifiers": {
