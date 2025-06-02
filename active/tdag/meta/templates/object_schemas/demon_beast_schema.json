@@ -20,7 +20,7 @@
       "major": "string (e.g., 'Bronze', 'Silver')",
       "minor": "int (e.g., 1, 2, 3)"
     },
-    "animal_type": "string (validated via valid_animal_types)",
+    "demon_beast_type": "string (validated via valid_demon_beast_types)",
     "stats": {
       "soul_force": "int"
     },
