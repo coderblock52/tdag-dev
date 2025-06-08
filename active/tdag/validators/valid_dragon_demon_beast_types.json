@@ -1,0 +1,16 @@
+{
+  "id": "valid_dragon_demon_beast_types",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator for dragon-type demon beasts.",
+  "version": "1.0",
+  "last_updated": "2025-06-05T00:00:00Z",
+  "tags": [],
+  "linked_files": [],
+  "values": [
+    "Ash-Bearded White Dragon",
+    "Black Scaled Earth Dragon",
+    "Bloodwing Saint Jiao-dragon",
+    "Gold-Scarlet Blood Jiao-dragon"
+  ]
+}

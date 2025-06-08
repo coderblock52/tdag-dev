@@ -1,0 +1,20 @@
+{
+  "id": "valid_rank_structure",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator for structured rank progression, covering both earthen and heavenly major ranks and their minor tier counts.",
+  "version": "1.0",
+  "last_updated": "2025-06-05T00:00:00Z",
+  "tags": ["ranks", "progression", "minor_ranks"],
+  "linked_files": [],
+  "values": {
+    "earthen": {
+      "major_ranks": ["Bronze", "Silver", "Gold", "Black Gold", "Legendary"],
+      "minor_ranks": [1, 2, 3, 4, 5]
+    },
+    "heavenly": {
+      "major_ranks": ["Heavenly Fate", "Heavenly Star", "Heavenly Axis", "Dao of Dragon", "Martial Ancestor"],
+      "minor_ranks": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    }
+  }
+}

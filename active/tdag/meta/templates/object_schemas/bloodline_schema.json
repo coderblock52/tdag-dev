@@ -1,0 +1,22 @@
+{
+  "id": "bloodline_schema",
+  "type": "schema",
+  "origin": "object_schemas",
+  "description": "Schema for bloodline objects derived from demon beasts.",
+  "version": "1.0",
+  "last_updated": "2025-06-05T00:00:00Z",
+  "tags": [
+    "bloodline",
+    "schema",
+    "soul"
+  ],
+  "linked_files": [],
+  "fields": {
+    "bloodline_id": "string",
+    "name": "string",
+    "origin_beast_type": "string",
+    "tier": "string",
+    "modifier_value": "float",
+    "description": "string"
+  }
+}

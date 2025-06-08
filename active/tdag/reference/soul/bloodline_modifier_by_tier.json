@@ -1,0 +1,13 @@
+{
+  "None":0.0,
+  "Common":0.05,
+  "Uncommon": 0.15,
+  "Rare": 0.3,
+  "Epic": 0.5,
+  "Earthen Draconic": 0.7,
+  "Legendary": 0.9,
+  "Heavenly": 1.0,
+  "Draconic": 1.2,
+  "Ancient": 1.5,
+  "Supreme": 2.0
+}

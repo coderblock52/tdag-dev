@@ -1,0 +1,11 @@
+{
+  "id": "valid_heavenly_demon_beast_types",
+  "type": "validator",
+  "origin": "validators",
+  "description": "Validator placeholder for heavenly demon beast types.",
+  "version": "1.0",
+  "last_updated": "2025-06-05T00:00:00Z",
+  "tags": [],
+  "linked_files": [],
+  "values": []
+}

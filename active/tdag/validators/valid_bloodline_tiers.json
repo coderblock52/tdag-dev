@@ -9,9 +9,15 @@
   "linked_files": [],
   "values": [
     "None",
-    "Low",
-    "Medium",
-    "High",
-    "Legendary"
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Epic",
+    "Earthen Draconic",
+    "Legendary",
+    "Heavenly",
+    "Draconic",
+    "Ancient",
+    "Supreme"
   ]
 }

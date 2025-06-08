@@ -1,0 +1,66 @@
+{
+  "none": [
+    ""
+  ],
+  "sacred-fire": [
+    "Sacred Flame",
+    "Scarlet",
+    "Emberlight",
+    "Flame"
+  ],
+  "water": [
+    "Water",
+    "Tidecaller",
+    "Mistveil"
+  ],
+  "wind": [
+    "Wind",
+    "Skywhirl",
+    "Tempest"
+  ],
+  "lightning": [
+    "Lightning",
+    "Thunderstrike",
+    "Voltshade"
+  ],
+  "ice": [
+    "Ice",
+    "Frostclaw",
+    "Glacier"
+  ],
+  "toxic": [
+    "Toxic",
+    "Venomfang",
+    "Corruption"
+  ],
+  "chaos": [
+    "Chaos",
+    "Riftborn",
+    "Entropy"
+  ],
+  "void": [
+    "Void",
+    "Nether",
+    "Oblivion"
+  ],
+  "abyss": [
+    "Abyssal",
+    "Depth",
+    "Black"
+  ],
+  "snow-wind": [
+    "Snow-Wind",
+    "White Gale",
+    "Icespire"
+  ],
+  "lightning-fire": [
+    "Lightning-Fire",
+    "Stormflame",
+    "Crackling Blaze"
+  ],
+  "wind-lightning": [
+    "Wind-Lightning",
+    "Voltstorm",
+    "Skyburst"
+  ]
+}
