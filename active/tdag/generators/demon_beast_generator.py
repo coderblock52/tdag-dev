@@ -71,54 +71,19 @@ def generate_demon_beast(realm:str = 'earthen',
     demon_beast_type = random.choice(demon_beast_types)
 
     # 2. Soul rank (earthen only)
-    import soul_force_generator as sfg
-    rank_data = load_json(os.path.join(validators_dir, 'valid_soul_rank_structure.json')).get('values', {})
-    rank_realm = rank_data.get(realm, {})
-    major_ranks = rank_realm.get('major_ranks', [])
-    minor_ranks = rank_realm.get('minor_ranks', [])
-
-    # Equal‐weight picks by default:
-    major = weighted_choice(major_ranks)
-    minor = weighted_choice(minor_ranks)
-    soul_force = sfg.generate_soul_force(major_rank=major, minor_rank=minor, realm=realm)
-
+    from soul_rank_generator import generate_soul_rank
+    soul_rank_data = generate_soul_rank()
 
     # 3. Element attribute and name variant
     from element_generator import generate_element
     element_mapping = load_json(os.path.join(reference_dir, 'demon_beast_element_names.json'))
-#    element_id = random.choice(list(element_mapping.keys()))
-#    element_name = random.choice(element_mapping[element_id])
-#    elements = load_json(os.path.join(reference_dir, 'elements', 'elements.json'))
-#    element_obj = random.choice(elements)
     element = generate_element()  # returns {'id', 'display_name', ...}
     element_id = element['id']
     element_name = random.choice(element_mapping[element_id])
-    element_bonus = element['match_bonus']
 
     # 4. Bloodline generation
-    bloodline = None
-    try:
-        # Dynamically load bloodline_generator.py
-#        bg_path = os.path.join(script_dir, 'bloodline_generator.py')
-#        spec = importlib.util.spec_from_file_location('bloodline_generator', bg_path)
-#        bg = importlib.util.module_from_spec(spec)
-#        spec.loader.exec_module(bg)
-        import bloodline_generator as bg
-        bloodline = bg.generate_bloodline(origin_beast_type=demon_beast_type)
-    except Exception:
-        # Fallback: full-shaped object
-        tiers_data = load_json(os.path.join(validators_dir, 'valid_bloodline_tiers.json'))
-        bloodline_tiers = tiers_data.get('values', tiers_data)
-        tier = random.choice(bloodline_tiers)
-        modifier_map = load_json(os.path.join(reference_soul_dir, 'bloodline_modifier_by_tier.json'))
-        tier_name = tier if tier!= 'None' else 'Worthless'
-        bloodline = {
-            'origin_beast_type': demon_beast_type,
-            'tier': tier,
-            'name': f"{tier} {demon_beast_type} Bloodline",
-            'modifier_value': modifier_map.get(tier),
-            'description': f"A(n) {tier_name.lower()} bloodline derived from {demon_beast_type}."
-        }
+    import bloodline_generator as bg
+    bloodline = bg.generate_bloodline(origin_beast_type=demon_beast_type)
 
     # 5. Construct full flavor name
     full_name = f"{element_name} {demon_beast_type}" if element_name else demon_beast_type
@@ -126,9 +91,11 @@ def generate_demon_beast(realm:str = 'earthen',
     # Assemble demon beast object
     demon_beast = {
         'name': full_name,
-        'soul_rank': {'major': major, 'minor': minor},
+        'soul_rank': {'major': soul_rank_data['major'], 'minor': soul_rank_data['minor']},
         'demon_beast_type': demon_beast_type,
-        'stats': {'soul_force': soul_force},
+        'stats': {'soul_force': soul_rank_data['soul_force'],
+                  'cached_combat_power': 0  # Placeholder
+                  },
         'soul': {
             'element': element,
         },
