@@ -1,7 +1,0 @@
-{
-  "id": "soul_colors",
-  "type": "attribute",
-  "origin": "soul",
-  "description": "Soul colors used by cultivators to determine cultivation scaling.",
-  "values": []
-}

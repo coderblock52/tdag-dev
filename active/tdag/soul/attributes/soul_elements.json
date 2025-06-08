@@ -1,7 +1,0 @@
-{
-  "id": "soul_elements",
-  "type": "attribute",
-  "origin": "soul",
-  "description": "List of valid soul elements shared by cultivators and demon beasts.",
-  "values": []
-}

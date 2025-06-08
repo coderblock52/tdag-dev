@@ -1,7 +1,0 @@
-{
-  "id": "soul_interaction_matrix",
-  "type": "interaction_matrix",
-  "origin": "soul",
-  "description": "Matrix of interactions between various soul traits for simulation logic.",
-  "interactions": []
-}

@@ -1,7 +1,0 @@
-{
-  "id": "bloodline_modifiers",
-  "type": "modifier",
-  "origin": "soul",
-  "description": "Combat and cultivation modifiers based on soul bloodline quality.",
-  "modifiers": {}
-}
