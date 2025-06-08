@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "CultivationTechnique",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "quality": {
+            "type": "string"
+        },
+        "base_cultivation_speed": {
+            "type": "number"
+        },
+        "element": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "soul_form_bonus": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "forms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "modifier": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "forms",
+                "modifier"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "required": [
+        "id",
+        "quality",
+        "base_cultivation_speed",
+        "element",
+        "name"
+    ],
+    "additionalProperties": false
+}

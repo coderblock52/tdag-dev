@@ -1,0 +1,20 @@
+{
+  "id": "valid_cultivation_technique_qualities",
+  "type": "validator",
+  "origin": "validators/valid_cultivation_technique_qualities.json",
+  "description": "Allowed quality tiers for cultivation techniques.",
+  "version": "1.0",
+  "last_updated": "2025-06-08T22:00:00Z",
+  "tags": [
+    "validator",
+    "cultivation_technique"
+  ],
+  "linked_files": [],
+  "values": [
+    "poor",
+    "good",
+    "great",
+    "excellent",
+    "god"
+  ]
+}

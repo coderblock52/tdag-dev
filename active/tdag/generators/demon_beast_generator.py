@@ -76,7 +76,7 @@ def generate_demon_beast(realm:str = 'earthen',
 
     # 3. Element attribute and name variant
     from element_generator import generate_element
-    element_mapping = load_json(os.path.join(reference_dir, 'demon_beast_element_names.json'))
+    element_mapping = load_json(os.path.join(reference_dir, 'element_names_map.json'))
     element = generate_element()  # returns {'id', 'display_name', ...}
     element_id = element['id']
     element_name = random.choice(element_mapping[element_id])
