@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SoulForm",
+  "type": "object",
+  "properties": {
+    "form_name":   { "type": "string" },
+    "element":     { "type": "string" },
+    "modifier":    { "type": "number" }
+  },
+  "required": ["form_name", "element", "modifier"],
+  "additionalProperties": false
+}

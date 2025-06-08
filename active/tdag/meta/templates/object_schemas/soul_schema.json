@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {
+    "element":   { "type": "string" },
+    "soul_form": { "$ref": "soul_form_schema.json" }
+  },
+  "required": ["element", "soul_form"]
+}

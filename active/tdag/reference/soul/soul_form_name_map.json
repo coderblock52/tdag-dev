@@ -1,0 +1,249 @@
+{
+  "sacred-fire": {
+    "poor": [
+      "Solar Serpent",
+      "Crimson Lotus",
+      "Ashen Sky"
+    ],
+    "good": [
+      "Scarlet Blaze",
+      "Infernal Bloom",
+      "Sunfire Talon"
+    ],
+    "great": [
+      "Cinderbird",
+      "Heavenly Phoenix",
+      "Burning Sky",
+      "Radiant Inferno"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "water": {
+    "poor": [
+      "Crystal Ray",
+      "Raincaller",
+      "Mist Raven"
+    ],
+    "good": [
+      "Blue Serpent",
+      "River Ghost",
+      "Tide Swan"
+    ],
+    "great": [
+      "Abyssal Turtle",
+      "Tide Leviathan",
+      "Rift Jelly",
+      "Pearl Whale"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "wind": {
+    "poor": [
+      "Breeze Fox",
+      "Cyclone Fox",
+      "Highwind Lark"
+    ],
+    "good": [
+      "Wind Lynx",
+      "Cloudstrider",
+      "Feathered Storm"
+    ],
+    "great": [
+      "Heavenly Swallow",
+      "Gale Roc",
+      "Zephyr Drake",
+      "Sky Crane"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "lightning": {
+    "poor": [
+      "Flash Owl",
+      "Thunder Hawk",
+      "Cloud Wolf"
+    ],
+    "good": [
+      "Skyvolt Drake",
+      "Electric Cobra",
+      "Stormtalon"
+    ],
+    "great": [
+      "Stormflash Kite",
+      "Bolt Wolf",
+      "Skystrike Falcon",
+      "Volt Panther"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "ice": {
+    "poor": [
+      "Ice Lotus",
+      "Icicle Crow",
+      "Snow Panther"
+    ],
+    "good": [
+      "White Gale",
+      "Snow Wyrm",
+      "Chillblade Drake"
+    ],
+    "great": [
+      "Glacier Stag",
+      "Frosthorn Beast",
+      "Frozen Heron",
+      "Frost Vixen"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "toxic": {
+    "poor": [
+      "Venom Serpent",
+      "Rot Lurker",
+      "Toxic Thorn"
+    ],
+    "good": [
+      "Blight Vulture",
+      "Venom Claw",
+      "Corruption Bear"
+    ],
+    "great": [
+      "Acid Raven",
+      "Green Wyrm",
+      "Poison Moth",
+      "Toxin Scorpion"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "chaos": {
+    "poor": [
+      "Warped Raven",
+      "Entropy Talon",
+      "Fracture Beast"
+    ],
+    "good": [
+      "Discord Fang",
+      "Chaos Stag",
+      "Chasm Drake"
+    ],
+    "great": [
+      "Fracture Wolf",
+      "Broken Owl",
+      "Anarch Hydra",
+      "Mad Flame Ape"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "void": {
+    "poor": [
+      "Oblivion Lizard",
+      "Aether Mantis",
+      "Nether Roc"
+    ],
+    "good": [
+      "Dark Plume",
+      "Shadow Cloud",
+      "Nullshade Viper"
+    ],
+    "great": [
+      "Black Pulse Hawk",
+      "Silent Fang",
+      "Vacuum Tiger",
+      "Void Bat"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "abyss": {
+    "poor": [
+      "Drowned Owl",
+      "Marrow Eel",
+      "Abyss Serpent"
+    ],
+    "good": [
+      "Leviathan Fang",
+      "Leech Drake",
+      "Trench Horror"
+    ],
+    "great": [
+      "Sunken Shade",
+      "Deep Maw",
+      "Trench Ghoul",
+      "Sunken Claw"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "snow-wind": {
+    "poor": [
+      "Hail Stag",
+      "Frozen Mist Lynx",
+      "Snowstorm Heron"
+    ],
+    "good": [
+      "Chill Feather",
+      "Blizzard Fox",
+      "Frozen Cloud Wolf"
+    ],
+    "great": [
+      "Icewind Serpent",
+      "Howling Ibis",
+      "Snow Gale Crane",
+      "White Vortex"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "lightning-fire": {
+    "poor": [
+      "Voltflare Serpent",
+      "Sparkwrath Fox",
+      "Arcblaze Lynx"
+    ],
+    "good": [
+      "Blazing Thunder Roc",
+      "Crackling Flamehawk",
+      "Thunderblaze Drake"
+    ],
+    "great": [
+      "Crackle Mane",
+      "Ember Spark Drake",
+      "Stormfire Tiger",
+      "Shockfire Ram"
+    ],
+    "excellent": [],
+    "god": []
+  },
+  "wind-lightning": {
+    "poor": [
+      "Flashwind Jackal",
+      "Gustfang Drake",
+      "Skyrend Phoenix"
+    ],
+    "good": [
+      "Stormlure Kite",
+      "Stormcloud Viper",
+      "Thundergale Fox"
+    ],
+    "great": [
+      "Cloudburst Hare",
+      "Skyvolt Heron",
+      "Tempest Owl",
+      "Flashgale Raven"
+    ],
+    "excellent": [],
+    "god": []
+    },
+    "None": {
+        "poor": ["Scattered"],
+        "good": ["Scattered"],
+        "great": ["Scattered"],
+        "excellent": [],
+        "god": []
+    }
+}

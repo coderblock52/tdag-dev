@@ -51,7 +51,12 @@ def weighted_randint(x_min, x_max, w_min=0.005, w_max=10.0):
     idx = bisect.bisect_right(cum_weights, r)
     return values[idx]
 
-def generate_soul_force(major_rank, minor_rank, realm='earthen'):
+def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen'):
+    #for testing
+#    if not major_rank:
+#        major_rank = 'Gold'
+#    if not minor_rank:
+#        minor_rank = 5
     # Resolve directories
     script_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.abspath(os.path.join(script_dir, '..'))
@@ -80,9 +85,7 @@ def generate_soul_force(major_rank, minor_rank, realm='earthen'):
     min_val = minor_rank * base_value if minor_rank > 1 else 1
     if minor_rank == minors[-1]:  # If it's the last minor rank
         # If it's the last minor rank, use the next major rank's base value
-        next_major_rank = list(realm_map.keys())[list(realm_map.values()).index(multiplier) + 1]
-        next_multiplier = realm_map.get(next_major_rank, 1)
-        max_val = next_multiplier * base_unit
+        max_val = base_value * 10
     else:
         max_val = (minor_rank + 1) * base_value
 
@@ -91,8 +94,8 @@ def generate_soul_force(major_rank, minor_rank, realm='earthen'):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate a soul force value based on rank.")
-    parser.add_argument('--major', required=True, help="Major rank (e.g., Bronze, Silver)")
-    parser.add_argument('--minor', type=int, required=True, help="Minor rank number")
+    parser.add_argument('--major', required=False, help="Major rank (e.g., Bronze, Silver)")
+    parser.add_argument('--minor', type=int, required=False, help="Minor rank number")
     parser.add_argument('--realm', choices=['earthen', 'heavenly'], default='earthen', help="Rank realm")
     parser.add_argument('-o', '--output', choices=['json', 'pretty'], default='pretty', help="Output format")
     args = parser.parse_args()

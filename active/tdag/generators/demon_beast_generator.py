@@ -84,14 +84,16 @@ def generate_demon_beast(realm:str = 'earthen',
 
 
     # 3. Element attribute and name variant
+    from element_generator import generate_element
     element_mapping = load_json(os.path.join(reference_dir, 'demon_beast_element_names.json'))
 #    element_id = random.choice(list(element_mapping.keys()))
 #    element_name = random.choice(element_mapping[element_id])
-    elements = load_json(os.path.join(reference_dir, 'elements', 'elements.json'))
-    element_obj = random.choice(elements)
-    element_id = element_obj['id']
+#    elements = load_json(os.path.join(reference_dir, 'elements', 'elements.json'))
+#    element_obj = random.choice(elements)
+    element = generate_element()  # returns {'id', 'display_name', ...}
+    element_id = element['id']
     element_name = random.choice(element_mapping[element_id])
-    element_bonus = element_obj['match_bonus']
+    element_bonus = element['match_bonus']
 
     # 4. Bloodline generation
     bloodline = None
@@ -128,8 +130,7 @@ def generate_demon_beast(realm:str = 'earthen',
         'demon_beast_type': demon_beast_type,
         'stats': {'soul_force': soul_force},
         'soul': {
-            'element': element_id,
-            'bloodline': bloodline['name']
+            'element': element,
         },
         'bloodline': bloodline
     }

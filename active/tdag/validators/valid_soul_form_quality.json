@@ -1,0 +1,17 @@
+{
+"id": "valid_soul_form_quality",
+"type": "validator",
+"origin": "validators/valid_soul_form_quality.json",
+"description": "Validator for soul form quality tiers.",
+"version": "1.0",
+"last_updated": "2025-06-08T22:00:00Z",
+"tags": ["validator", "soul_form", "quality"],
+"linked_files": [],
+"values": [
+"poor",
+"good",
+"great",
+"excellent",
+"god"
+]
+}
