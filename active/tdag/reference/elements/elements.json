@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sacred-fire",
+    "display_name": "Sacred Fire",
+    "match_bonus": 0.1,
+    "description": "Aligned with the power of the sacred flame."
+  },
+  {
+    "id": "water",
+    "display_name": "Water",
+    "match_bonus": 0.1,
+    "description": "Harnesses fluidity and adaptability."
+  },
+  {
+    "id": "wind",
+    "display_name": "Wind",
+    "match_bonus": 0.1,
+    "description": "Embodies freedom and motion."
+  },
+  {
+    "id": "lightning",
+    "display_name": "Lightning",
+    "match_bonus": 0.1,
+    "description": "Channels the speed of thunder."
+  },
+  {
+    "id": "ice",
+    "display_name": "Ice",
+    "match_bonus": 0.1,
+    "description": "Channels the still, chilling force of ice."
+  },
+  {
+    "id": "toxic",
+    "display_name": "Toxic",
+    "match_bonus": 0.1,
+    "description": "Wields corrosive and venomous power."
+  },
+  {
+    "id": "chaos",
+    "display_name": "Chaos",
+    "match_bonus": 0.1,
+    "description": "Embraces unpredictability and entropy."
+  },
+  {
+    "id": "void",
+    "display_name": "Void",
+    "match_bonus": 0.1,
+    "description": "Harnesses the emptiness of the void."
+  },
+  {
+    "id": "abyss",
+    "display_name": "Abyssal",
+    "match_bonus": 0.1,
+    "description": "Draws from the depths of the abyss."
+  },
+  {
+    "id": "snow-wind",
+    "display_name": "Snow-Wind",
+    "match_bonus": 0.1,
+    "description": "Combines frost and gale."
+  },
+  {
+    "id": "lightning-fire",
+    "display_name": "Stormflame",
+    "match_bonus": 0.1,
+    "description": "Marries lightning and fire."
+  },
+  {
+    "id": "wind-lightning",
+    "display_name": "Voltstorm",
+    "match_bonus": 0.1,
+    "description": "Fuses wind with lightning."
+  }
+]

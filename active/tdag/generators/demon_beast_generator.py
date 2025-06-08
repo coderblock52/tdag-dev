@@ -42,7 +42,7 @@ import os
 import json
 import random
 import argparse
-import importlib.util
+#import importlib.util
 import random
 
 def load_json(path):
@@ -85,8 +85,13 @@ def generate_demon_beast(realm:str = 'earthen',
 
     # 3. Element attribute and name variant
     element_mapping = load_json(os.path.join(reference_dir, 'demon_beast_element_names.json'))
-    element_id = random.choice(list(element_mapping.keys()))
+#    element_id = random.choice(list(element_mapping.keys()))
+#    element_name = random.choice(element_mapping[element_id])
+    elements = load_json(os.path.join(reference_dir, 'elements', 'elements.json'))
+    element_obj = random.choice(elements)
+    element_id = element_obj['id']
     element_name = random.choice(element_mapping[element_id])
+    element_bonus = element_obj['match_bonus']
 
     # 4. Bloodline generation
     bloodline = None
