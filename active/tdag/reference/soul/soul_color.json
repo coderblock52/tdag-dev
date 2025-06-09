@@ -1,0 +1,5 @@
+{
+"common": ["Red", "Orange"],
+"uncommon": ["Yellow", "Green"],
+"rare": ["Cyan", "Purple"]
+}

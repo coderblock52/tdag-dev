@@ -21,6 +21,7 @@ import os
 import json
 import random
 import argparse
+# need to implement generation context
 
 def load_json(path: str):
     with open(path, 'r', encoding='utf-8') as f:

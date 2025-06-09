@@ -15,8 +15,10 @@ Usage:
 """
 import os
 import json
-import random
 import argparse
+from helpers.generation_context import GenerationContext, parse_overrides
+from helpers.weight_utils import weighted_choice
+# todo: need to implement forcing an element to exist if the soul force provided is over 10,000
 
 
 def load_json(path: str) -> list:
@@ -25,7 +27,9 @@ def load_json(path: str) -> list:
         return json.load(f)
 
 
-def generate_element(element_id: str = None) -> dict:
+def generate_element(element_id: str = None,
+                     soul_force: int = None,
+                     ctx:GenerationContext = GenerationContext()) -> dict:
     """
     Returns an element object:
     - If element_id is provided, returns that element (or raises ValueError).
@@ -40,13 +44,34 @@ def generate_element(element_id: str = None) -> dict:
     element_map = {e['id']: e for e in elements}
 
     if element_id:
-        elem = element_map.get(element_id)
+        elem = element_map.get(element_id.lower())
         if not elem:
             raise ValueError(f"Unknown element ID: {element_id}")
         return elem
 
     # Random selection
-    return random.choice(elements)
+    # exclusive if a weight dict is provided, otherwise it's not exclusive
+    # but if a soul force is provided, we need to setup the weight to be None:0.0 if soul_force is 10,000 or more
+    if ctx.override_element_weights:
+        exclusive = True
+    else:
+        exclusive = False
+    if soul_force:
+        if soul_force >= 10000:
+            # Force an element to exist if soul force is gold or above
+            ctx.override_element_weights['None'] = 0.0
+        elif soul_force < 1000:
+            # If soul force is below silver, no element is allowed
+            ctx.override_element_weights = {'None':1.0}
+            exclusive = True
+
+    element_id = weighted_choice(
+        list(element_map.keys()),
+        weights_path=os.path.join(root_dir, 'reference', 'roll_weights', 'elements.json'),
+        override_weights=ctx.override_element_weights,
+        exclusive=exclusive
+    )
+    return element_map[element_id.lower()]
 
 
 def main():
@@ -57,19 +82,22 @@ def main():
         default=None
     )
     parser.add_argument(
+    '--override', '-O',
+    action='append',
+    metavar='CAT:KEY=WEIGHT',
+    help="e.g. db:wolf=80 or el:ice=30"
+    )
+    parser.add_argument(
         '-o', '--output',
         choices=['json', 'pretty'],
         default='pretty',
         help="Output format: 'json' for raw JSON, 'pretty' for indented."
     )
     args = parser.parse_args()
+    overrides = parse_overrides(args.override)  # where --override flags are collected
+    ctx = GenerationContext(**overrides)
 
-    try:
-        elem = generate_element(element_id=args.element)
-    except ValueError as err:
-        print(f"Error: {err}")
-        return
-
+    elem = generate_element(element_id=args.element, ctx=ctx)
     if args.output == 'json':
         print(json.dumps(elem))
     else:

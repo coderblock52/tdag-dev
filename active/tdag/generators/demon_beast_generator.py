@@ -42,48 +42,55 @@ import os
 import json
 import random
 import argparse
-#import importlib.util
+import importlib.util
 import random
+from helpers.weight_utils import weighted_choice
+from helpers.generation_context import GenerationContext, parse_overrides
+#todo:
+# - implement bloodline generation being determined by current soul force
+# - potentially implement certain demon beast types being more likely under certain conditions
+
 
 def load_json(path):
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
     
-def weighted_choice(seq, weights=None):
-    # If no weights provided, default to equal weighting
-    if weights is None:
-        weights = [1] * len(seq)
-    return random.choices(seq, weights=weights, k=1)[0]
-
 def generate_demon_beast(realm:str = 'earthen',
-                         major_soul_weights:list = None,
-                         minor_soul_weights:list = None):
+                         ctx: GenerationContext = GenerationContext()
+                         ) -> dict:
+    from .soul_rank_generator import generate_soul_rank
+    from .element_generator import generate_element
+    from .bloodline_generator import generate_bloodline
+
     # Directories
     script_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.abspath(os.path.join(script_dir, '..'))
     validators_dir = os.path.join(root_dir, 'validators')
     reference_dir = os.path.join(root_dir, 'reference')
-    reference_soul_dir = os.path.join(reference_dir, 'soul')
+
 
     # 1. Demon beast type
     beast_types_data = load_json(os.path.join(validators_dir, 'valid_demon_beast_types.json'))
     demon_beast_types = beast_types_data.get('values', beast_types_data)
-    demon_beast_type = random.choice(demon_beast_types)
+    demon_beast_type = weighted_choice(
+        list(demon_beast_types),
+        weights_path=os.path.join(reference_dir, 'roll_weights', 'demon_beast_types.json'),
+        override_weights= ctx.override_demon_beast_weights,
+        exclusive=True
+    )
 
     # 2. Soul rank (earthen only)
-    from soul_rank_generator import generate_soul_rank
-    soul_rank_data = generate_soul_rank()
+    soul_rank_data = generate_soul_rank(ctx=ctx)
 
     # 3. Element attribute and name variant
-    from element_generator import generate_element
-    element_mapping = load_json(os.path.join(reference_dir, 'element_names_map.json'))
-    element = generate_element()  # returns {'id', 'display_name', ...}
+
+    element_name_mapping = load_json(os.path.join(reference_dir, 'element_names_map.json'))
+    element = generate_element(ctx=ctx, soul_force = soul_rank_data['soul_force'])  # returns {'id', 'display_name', ...}
     element_id = element['id']
-    element_name = random.choice(element_mapping[element_id])
+    element_name = random.choice(element_name_mapping[element_id])
 
     # 4. Bloodline generation
-    import bloodline_generator as bg
-    bloodline = bg.generate_bloodline(origin_beast_type=demon_beast_type)
+    bloodline = generate_bloodline(origin_beast_type=demon_beast_type, ctx=ctx)
 
     # 5. Construct full flavor name
     full_name = f"{element_name} {demon_beast_type}" if element_name else demon_beast_type
@@ -106,14 +113,23 @@ def generate_demon_beast(realm:str = 'earthen',
 def main():
     parser = argparse.ArgumentParser(description='Generate a complete demon beast object for TDAG.')
     parser.add_argument(
+    '--override', '-O',
+    action='append',
+    metavar='CAT:KEY=WEIGHT',
+    help="e.g. db:wolf=80 or el:ice=30"
+    )
+    parser.add_argument(
     '-o', '--output',
     choices=['json', 'pretty'],
     default='pretty',
     help="Output format: 'json' for raw, 'pretty' for indented."
     )
     args = parser.parse_args()
+    overrides = parse_overrides(args.override)  # where --override flags are collected
+    ctx = GenerationContext(**overrides)
 
-    beast = generate_demon_beast()
+
+    beast = generate_demon_beast(ctx=ctx)
     if args.output == 'json':
         print(json.dumps(beast))
     else:

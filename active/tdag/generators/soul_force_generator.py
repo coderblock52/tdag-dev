@@ -20,6 +20,7 @@ import random
 import argparse
 import bisect
 import itertools
+# do not need generation context here
 
 
 def load_json(path):
@@ -52,11 +53,6 @@ def weighted_randint(x_min, x_max, w_min=0.005, w_max=10.0):
     return values[idx]
 
 def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen'):
-    #for testing
-#    if not major_rank:
-#        major_rank = 'Gold'
-#    if not minor_rank:
-#        minor_rank = 5
     # Resolve directories
     script_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.abspath(os.path.join(script_dir, '..'))

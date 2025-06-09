@@ -17,6 +17,7 @@ import os
 import json
 import random
 import argparse
+# no need for generation_context since it's so simple
 
 def load_json(path: str) -> dict:
     """Load JSON data from the given file path."""
@@ -49,9 +50,7 @@ def generate_technique_name(element: str, quality: str) -> str:
             'demon_beast',
             'demon_beast_types.json'
         )
-        db_types = load_json(db_path)
-        # if file is a dict with "values" key, otherwise assume it's a list
-        types_list = db_types.get('values', db_types)
+        types_list = load_json(db_path)
         tech_root = random.choice(types_list)
     else:
         # Load quality name map
