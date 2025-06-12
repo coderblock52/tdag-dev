@@ -30,8 +30,13 @@ def validate_response(response, valid_keys):
     
     return True
 
-def simple_join(*args):
+def validate_value(value, valid_values):
     """
-    Joins multiple strings with a single space, ignoring empty strings.
+    Validates that the value is in the set of valid_values.
+    Raises ValueError if the value is not valid.
     """
-    return ' '.join(filter(None, args)).strip()
+    if value not in valid_values:
+        raise ValueError(f"Invalid value: {value}. Valid values are: {', '.join(valid_values)}")
+    
+    return True
+

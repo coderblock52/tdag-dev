@@ -13,7 +13,7 @@ import os
 import json
 import random
 import argparse
-from .soul_force_generator import generate_soul_force
+from soul_force_generator import generate_soul_force
 from helpers.generation_context import GenerationContext, parse_overrides
 from helpers.weight_utils import weighted_choice
 

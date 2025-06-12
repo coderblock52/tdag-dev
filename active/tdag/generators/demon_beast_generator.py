@@ -58,9 +58,9 @@ def load_json(path):
 def generate_demon_beast(realm:str = 'earthen',
                          ctx: GenerationContext = GenerationContext()
                          ) -> dict:
-    from .soul_rank_generator import generate_soul_rank
-    from .element_generator import generate_element
-    from .bloodline_generator import generate_bloodline
+    from soul_rank_generator import generate_soul_rank
+    from element_generator import generate_element
+    from bloodline_generator import generate_bloodline
 
     # Directories
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -135,4 +135,5 @@ def main():
     else:
         print(json.dumps(beast, indent=2))
 
-main()
+if __name__ == '__main__':
+    main()
