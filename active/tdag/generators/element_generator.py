@@ -18,7 +18,6 @@ import json
 import argparse
 from helpers.generation_context import GenerationContext, parse_overrides
 from helpers.weight_utils import weighted_choice
-# todo: need to implement forcing an element to exist if the soul force provided is over 10,000
 
 
 def load_json(path: str) -> list:

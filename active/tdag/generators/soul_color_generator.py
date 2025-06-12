@@ -19,7 +19,8 @@ import os
 import json
 import random
 import argparse
-# need to use generation context
+from helpers.generation_context import GenerationContext, parse_overrides
+from helpers.weight_utils import weighted_choice
 
 
 def load_json(path: str) -> dict:
@@ -27,7 +28,7 @@ def load_json(path: str) -> dict:
         return json.load(f)
 
 
-def generate_soul_color() -> dict:
+def generate_soul_color(ctx:GenerationContext=GenerationContext()) -> dict:
     """
     Randomly select a soul color and its rarity.
     Returns a dict with 'color' and 'rarity'.
@@ -35,24 +36,29 @@ def generate_soul_color() -> dict:
     # Paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.abspath(os.path.join(script_dir, '..'))
-    validators_dir = os.path.join(root_dir, 'validators')
     ref_soul_dir = os.path.join(root_dir, 'reference', 'soul')
+    rw_dir = os.path.join(root_dir, 'reference', 'roll_weights')
+    valid_path = os.path.join(root_dir, 'validators', 'valid_soul_colors.json')
 
-    # Load valid colors (to validate file) - not strictly needed for gen
-    valid = load_json(os.path.join(validators_dir, 'valid_soul_colors.json'))['values']
+    # Load soul color quality options
+    color_quality_map = load_json(os.path.join(rw_dir, 'soul_color_qualities.json'))
 
     # Load rarity groups
     color_map = load_json(os.path.join(ref_soul_dir, 'soul_color.json'))
-    rarities = list(color_map.keys())  # ['common','uncommon','rare']
-    # Weights matching idea: common=70, uncommon=25, rare=5
-    weights = [70, 25, 5]
+    print(color_map)
     # Pick rarity
-    rarity = random.choices(rarities, weights=weights, k=1)[0]
+    rarity = weighted_choice(
+        list(color_quality_map.keys()),
+        weights_path=os.path.join(rw_dir, 'soul_color_qualities.json'),
+        override_weights=ctx.override_soul_color_weights,
+        exclusive=True)
+    print(rarity)
     # Pick color within rarity tier
     colors = color_map.get(rarity, [])
     if not colors:
         raise RuntimeError(f"No colors defined for rarity '{rarity}'")
     color = random.choice(colors)
+    valid = load_json(valid_path)['values']
     if color not in valid:
         raise RuntimeError(f"Generated invalid soul color: {color}")
     return {'color': color, 'rarity': rarity}
@@ -73,6 +79,7 @@ def apply_soul_color_modifier(base_speed: float, technique_quality: str, soul_co
     validators_dir = os.path.join(root_dir, 'validators')
     ref_ct_dir = os.path.join(root_dir, 'reference', 'cultivation_technique')
     ref_soul_dir = os.path.join(root_dir, 'reference', 'soul')
+
 
     # Load quality tiers and base speeds
     qualities = load_json(os.path.join(validators_dir, 'valid_cultivation_technique_qualities.json'))['values']
@@ -123,17 +130,22 @@ def main():
                         help="Technique quality (poor..god)")
     parser.add_argument('-c', '--color', default=None,
                         help="Optional soul color ID to use instead of random.")
+    parser.add_argument(
+    '--override', '-O',
+    action='append',
+    metavar='CAT:KEY=WEIGHT',
+    help="e.g. db:wolf=80 or el:ice=30"
+    )
     parser.add_argument('-o', '--output', choices=['json','pretty'], default='pretty')
     args = parser.parse_args()
+    args = parser.parse_args()
+    overrides = parse_overrides(args.override)  # where --override flags are collected
+    ctx = GenerationContext(**overrides)
 
-    sc = args.color or generate_soul_color()['color']
+    sc = args.color or generate_soul_color(ctx)
     test_speed = args.test_speed
-    mod_speed = apply_soul_color_modifier(test_speed, args.quality, sc)
     result = {
         'soul_color': sc,
-        'quality': args.quality,
-        'base_speed': test_speed,
-        'modified_speed': mod_speed
     }
     if args.output == 'json':
         print(json.dumps(result))

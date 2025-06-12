@@ -21,32 +21,27 @@ Usage:
 """
 import json
 import os
-import random
 import argparse
+from meta.utils import load_json, get_common_paths
 from helpers.weight_utils import weighted_choice
 from helpers.generation_context import GenerationContext, parse_overrides
-
-def load_json(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
 
 def generate_bloodline(origin_beast_type=None, 
                        force_bloodline_tier:str=None, # optional override for specific calls
                        ctx: GenerationContext = GenerationContext(),
                        ) -> dict:
-    # Resolve directories
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
+    paths = get_common_paths()
+    root_dir = paths['root']
+    reference_dir = paths['reference']
 
     # Load valid bloodline tiers
-    modifier_map = load_json(os.path.join('reference', 'soul', 'bloodline_modifier_by_tier.json'))
+    bloodline_modifier_map = load_json(os.path.join(reference_dir, 'soul', 'bloodline_modifier_by_tier.json'))
     if force_bloodline_tier:
-        if force_bloodline_tier not in modifier_map:
+        if force_bloodline_tier not in bloodline_modifier_map.keys():
             raise ValueError(f"Invalid bloodline tier: {force_bloodline_tier}")
         tier = force_bloodline_tier
     else:
-        bloodline_tiers = modifier_map.keys()
-        tier = weighted_choice(list(bloodline_tiers), 
+        tier = weighted_choice(list(bloodline_modifier_map.keys()), 
                                weights_path=os.path.join(root_dir, 'reference', 'roll_weights', 'bloodline_tiers.json'), 
                                override_weights=ctx.override_bloodline_weights,
                                exclusive=True)
@@ -54,17 +49,17 @@ def generate_bloodline(origin_beast_type=None,
     # Random selections
     if not origin_beast_type:
         # Load valid demon beast types
-        demon_beast_types = load_json(os.path.join('reference', 'demon_beast', 'demon_beast_types.json'))
+        demon_beast_types = load_json(os.path.join(reference_dir, 'demon_beast', 'demon_beast_types.json'))
         origin_beast_type = weighted_choice(
             list(demon_beast_types),
-            weights_path=os.path.join(root_dir, 'reference', 'roll_weights', 'demon_beast_types.json'),
+            weights_path=os.path.join(reference_dir, 'roll_weights', 'demon_beast_types.json'),
             override_weights=ctx.override_demon_beast_weights,
             exclusive=True
         )
 
     # Construct bloodline fields
     name = f"{tier} {origin_beast_type} Bloodline" if tier else f"{origin_beast_type} Bloodline"
-    modifier_value = modifier_map.get(tier)
+    modifier_value = bloodline_modifier_map.get(tier)
     tier_name = tier if tier!= 'None' else 'Worthless'
     description = f"A(n) {tier_name.lower()} bloodline derived from {origin_beast_type}."
 

@@ -17,12 +17,7 @@ import os
 import json
 import random
 import argparse
-# no need for generation_context since it's so simple
-
-def load_json(path: str) -> dict:
-    """Load JSON data from the given file path."""
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+from meta.utils import load_json, get_common_paths
 
 def generate_technique_name(element: str, quality: str) -> str:
     """
@@ -36,9 +31,9 @@ def generate_technique_name(element: str, quality: str) -> str:
         Full technique name string.
     """
     # Resolve directories
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
-
+    paths = get_common_paths()
+    root_dir = paths['root']
+    reference_dir = paths['reference']
     
     ####
     # 1) Determine tech_root and get correct tech root name 

@@ -5,7 +5,7 @@ Each validator represents a canonical list of valid values used across simulatio
 
 HOW TO USE:
 - System files that use one of these validators should include a "validator_reference" field pointing to the appropriate file.
-- Validators should be updated centrally — do NOT hardcode values inside generators or systems.
+- Validators should be updated centrally, do NOT hardcode values inside generators or systems.
 
 CURRENTLY LINKED:
 - valid_elements.json
