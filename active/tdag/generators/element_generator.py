@@ -18,12 +18,7 @@ import json
 import argparse
 from helpers.generation_context import GenerationContext, parse_overrides
 from helpers.weight_utils import weighted_choice
-
-
-def load_json(path: str) -> list:
-    """Load JSON array from a file path."""
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+from meta.utils import get_common_paths, load_json
 
 
 def generate_element(element_id: str = None,
@@ -35,11 +30,10 @@ def generate_element(element_id: str = None,
     - If not, picks one at random from the reference list.
     """
     # Resolve reference path
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
-    ref_path = os.path.join(root_dir, 'reference', 'elements', 'elements.json')
+    paths = get_common_paths()
+    reference_dir = paths['reference']
 
-    elements = load_json(ref_path)
+    elements = load_json(os.path.join(reference_dir, 'elements', 'elements.json'))
     element_map = {e['id']: e for e in elements}
 
     if element_id:
@@ -66,7 +60,7 @@ def generate_element(element_id: str = None,
 
     element_id = weighted_choice(
         list(element_map.keys()),
-        weights_path=os.path.join(root_dir, 'reference', 'roll_weights', 'elements.json'),
+        weights_path=os.path.join(reference_dir, 'roll_weights', 'elements.json'),
         override_weights=ctx.override_element_weights,
         exclusive=exclusive
     )

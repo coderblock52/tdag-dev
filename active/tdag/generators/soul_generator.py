@@ -23,8 +23,7 @@ from soul_form_generator import generate_soul_form
 
 
 def generate_soul(element = None,
-                  quality: str = None,
-                  realm: str = 'earthen') -> dict:
+                  quality: str = None) -> dict:
     """
     Build a soul object:
     - element_id: optional, picks random if None
@@ -49,7 +48,6 @@ def main():
     parser = argparse.ArgumentParser(description="Generate a soul for TDAG cultivators.")
     parser.add_argument('-e', '--element', help="Element ID (e.g., 'ice')", default=None)
     parser.add_argument('-q', '--quality', help="Soul-form quality", default=None)
-    parser.add_argument('-r', '--realm', help="Soul realm (earthen or heavenly)", default='earthen')
     parser.add_argument('-o', '--output', choices=['json','pretty'], default='pretty',
                         help="Output format: 'json' for raw output, 'pretty' for indented.")
     args = parser.parse_args()

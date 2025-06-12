@@ -1,17 +1,7 @@
 {
-"poor": {
-"modifier": 0.05
-},
-"good": {
-"modifier": 0.10
-},
-"great": {
-"modifier": 0.15
-},
-"excellent": {
-"modifier": 0.20
-},
-"god": {
-"modifier": 0.25
-}
+"poor": 0.05,
+"good": 0.10,
+"great": 0.15,
+"excellent": 0.20,
+"god": 0.25
 }

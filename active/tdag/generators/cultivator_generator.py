@@ -29,7 +29,7 @@ import argparse
 from element_generator import generate_element
 from soul_generator import generate_soul
 from soul_rank_generator import generate_soul_rank
-from soul_color_generator import generate_soul_color, apply_soul_color_modifier
+from soul_color_generator import generate_soul_color
 from bloodline_generator import generate_bloodline
 from cultivation_technique_generator import generate_cultivation_technique
 # todo: need to use generation context
@@ -67,15 +67,7 @@ def generate_cultivator() -> dict:
     active_tech_id = technique.get('id') if technique else None
 
     # 7) Cached cultivation speed
-    base_speed = technique.get('base_cultivation_speed') if technique else None
-    cached_cultivation_speed = None
-    if base_speed is not None:
-        # apply soul color modifier
-        cached_cultivation_speed = apply_soul_color_modifier(
-            base_speed,
-            technique['quality'],
-            soul_color
-        )
+    cultivation_base_speed = technique.get('base_cultivation_speed') if technique else None
 
     # 8) Cached combat power (snapshot of soul_force modified by element matching)
     # simple: use soul_force as base
@@ -91,7 +83,7 @@ def generate_cultivator() -> dict:
         'class': cls,
         'bloodline': bloodline,
         'active_cultivation_technique': active_tech_id,
-        'cached_cultivation_speed': cached_cultivation_speed,
+        'cached_cultivation_speed': cultivation_base_speed,
         'cached_combat_power': cached_combat_power,
         'integrated_demon_spirit': None
     }

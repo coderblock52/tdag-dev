@@ -36,6 +36,8 @@ import os
 import json
 import random
 from typing import Mapping, Sequence, Optional, TypeVar
+import bisect
+import itertools
 
 T = TypeVar('T')
 
@@ -103,3 +105,28 @@ exclusive: bool = False
 
     # Perform weighted random choice
     return random.choices(candidates, weights=weights, k=1)[0]
+
+def weighted_randint(x_min, x_max, w_min=0.005, w_max=10.0):
+    """
+    Return a random integer between x_min and x_max inclusive,
+    with weight w(x) = w_max - (w_max - w_min)*(x - x_min)/(x_max - x_min).
+    """
+    # 1) Build the discrete values and their weights
+    values = list(range(x_min, x_max + 1))
+    span   = x_max - x_min
+    # linear weight for each integer
+    weights = [
+        w_max - (w_max - w_min) * (x - x_min) / span
+        for x in values
+    ]
+
+    # 2) Build cumulative distribution
+    cum_weights = list(itertools.accumulate(weights))
+    total       = cum_weights[-1]
+
+    # 3) Sample a uniform random number in [0, total)
+    r = random.random() * total
+
+    # 4) Find the bucket via binary search
+    idx = bisect.bisect_right(cum_weights, r)
+    return values[idx]

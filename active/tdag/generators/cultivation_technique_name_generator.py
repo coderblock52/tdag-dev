@@ -35,7 +35,7 @@ def generate_technique_name(element: str, quality: str) -> str:
     reference_dir = paths['reference']
     
     ####
-    # 1) Determine tech_root and get correct tech root name 
+    # 1) Determine tech_root and get correct tech root name since good quality is based on demon beast types
     if quality == 'good':
         # special case: pick a Demon Beast type instead
         db_path = os.path.join(

@@ -2,28 +2,23 @@
 import os, json, random, uuid, argparse
 from helpers.generation_context import GenerationContext, parse_overrides
 from helpers.weight_utils import weighted_choice
-
-def load_json(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+from meta.utils import load_json, get_common_paths
 
 def generate_cultivation_technique(quality=None, element=None,
                                    ctx: GenerationContext = GenerationContext()) -> dict:
     from generators.cultivation_technique_name_generator import generate_technique_name
     from element_generator import generate_element
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
-    vals = load_json(os.path.join(root_dir, 'validators', 'valid_cultivation_technique_qualities.json'))['values']
-    speeds = load_json(os.path.join(root_dir, 'reference', 'cultivation_technique', 'base_cultivation_speeds.json'))
+    paths = get_common_paths()
+    validators_dir = paths['validators']
+    reference_dir = paths['reference']
+    qualities_list = load_json(os.path.join(validators_dir, 'valid_cultivation_technique_qualities.json'))['values']
+    speeds = load_json(os.path.join(reference_dir, 'cultivation_technique', 'base_cultivation_speeds.json'))
 
     # Quality selection
-    weights = [60, 30, 7, 2, 0]
-    if quality and quality not in vals:
-        raise ValueError(f"Unknown quality: {quality}")
-    q = quality or weighted_choice(vals, 
-                                  weights_path=os.path.join(root_dir, 'reference', 'roll_weights', 'cultivation_technique_qualities.json'),
-                                  override_weights=ctx.override_cultivation_technique_weights,
+    q = quality or weighted_choice(qualities_list, 
+                                  weights_path=os.path.join(reference_dir, 'roll_weights', 'cultivation_technique_qualities.json'),
+                                  override_weights=ctx.override_cultivation_technique_quality_weights,
                                   exclusive=True)
 
     # Element selection

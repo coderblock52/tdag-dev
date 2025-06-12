@@ -5,6 +5,10 @@ current_dir = os.path.join("c:/", "Users", "stevenb", "Documents", "onering", "r
 
 import_all_modules_from_dir(os.path.join(current_dir, "generators"), globals())
 import_all_modules_from_dir(os.path.join(current_dir, "helpers"), globals())
-# paths = get_common_paths()
-# def hello(): print('Hello, dev!')
+paths = get_common_paths()
+root_dir = paths["root"]
+reference_dir = paths["reference"]
+validators_dir = paths["validators"]
+ctx = GenerationContext()
+print("Hello, dev!")
 '

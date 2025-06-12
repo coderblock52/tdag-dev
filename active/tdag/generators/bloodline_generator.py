@@ -36,25 +36,24 @@ def generate_bloodline(origin_beast_type=None,
 
     # Load valid bloodline tiers
     bloodline_modifier_map = load_json(os.path.join(reference_dir, 'soul', 'bloodline_modifier_by_tier.json'))
-    tier = force_bloodline_tier
-    if not tier:
-        tier = weighted_choice(list(bloodline_modifier_map.keys()), 
-                               weights_path=os.path.join(root_dir, 'reference', 'roll_weights', 'bloodline_tiers.json'), 
-                               override_weights=ctx.override_bloodline_weights,
-                               exclusive=True)
+
+    tier = force_bloodline_tier or weighted_choice(list(bloodline_modifier_map.keys()), 
+                            weights_path=os.path.join(root_dir, 'reference', 'roll_weights', 'bloodline_tiers.json'), 
+                            override_weights=ctx.override_bloodline_weights,
+                            exclusive=True)
     validate_value(tier, bloodline_modifier_map.keys())
 
     # Random selections
     if not origin_beast_type:
         # Load valid demon beast types
-        demon_beast_types = load_json(os.path.join(reference_dir, 'demon_beast', 'demon_beast_types.json'))
+        demon_beast_types_list = load_json(os.path.join(reference_dir, 'demon_beast', 'demon_beast_types.json'))
         origin_beast_type = weighted_choice(
-            list(demon_beast_types.keys()),
+            list(demon_beast_types_list),
             weights_path=os.path.join(reference_dir, 'roll_weights', 'demon_beast_types.json'),
             override_weights=ctx.override_demon_beast_weights,
             exclusive=True
         )
-    validate_value(origin_beast_type, demon_beast_types.keys())
+    validate_value(origin_beast_type, demon_beast_types_list)
 
     # Construct bloodline fields
     name = f"{tier} {origin_beast_type} Bloodline" if tier else f"{origin_beast_type} Bloodline"

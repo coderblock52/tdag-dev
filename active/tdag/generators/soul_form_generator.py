@@ -21,64 +21,66 @@ import os
 import json
 import random
 import argparse
+from meta.utils import load_json, get_common_paths, validate_value
+from helpers.weight_utils import weighted_choice
+from helpers.generation_context import GenerationContext, parse_overrides
 # need to implement generation context
 
 def load_json(path: str):
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def generate_soul_form(element: str = None, quality: str = None) -> dict:
+def generate_soul_form(element: str = None, quality: str = None, ctx:GenerationContext=GenerationContext()) -> dict:
+    from element_generator import generate_element
     # Resolve dirs
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
-    validators_dir = os.path.join(root_dir, 'validators')
-    ref_soul_dir = os.path.join(root_dir, 'reference', 'soul')
+    paths = get_common_paths()
+    reference_dir = paths['reference']
 
     # 1) Element fallback
     if not element:
-        from element_generator import generate_element
-        element = generate_element()
+        element = generate_element(ctx=ctx)
 
-    # 2) Quality fallback (auto excludes highest tiers)
-    qual_vals = load_json(os.path.join(validators_dir, 'valid_soul_form_quality.json'))['values']
-    if not quality:
-        # exclude top two tiers (assumes ordered list)
-        auto_quals = qual_vals[:len(qual_vals)-2]
-        quality = random.choice(auto_quals)
-    elif quality not in qual_vals:
-        raise ValueError(f"Unknown soul form quality: {quality}")
+    # 2) Quality fallback (auto excludes highest tiers):
+        quality = quality or weighted_choice(
+            load_json(os.path.join(reference_dir, 'soul', 'soul_form_quality.json')),
+            weights_path=os.path.join(reference_dir, 'roll_weights', 'soul_form_quality.json'),
+            override_weights=ctx.override_soul_form_quality_weights,
+            exclusive=True
+        )
+
 
     # 3) Load modifier for this quality
-    mods_map = load_json(os.path.join(ref_soul_dir, 'soul_form_modifiers.json'))
-    quality_entry = mods_map.get(quality)
-    if not quality_entry:
-        raise ValueError(f"Missing modifier entry for quality '{quality}'")
-    modifier = quality_entry['modifier']
+    mods_map = load_json(os.path.join(reference_dir, 'soul', 'soul_form_modifiers.json'))
+    quality_modifier = mods_map.get(quality)
 
     # 4) Load name-map and pick a name
-    name_map = load_json(os.path.join(ref_soul_dir, 'soul_form_name_map.json'))
+    name_map = load_json(os.path.join(reference_dir, 'soul', 'soul_form_name_map.json'))
     element_map = name_map.get(element['id'], {})
     names = element_map.get(quality, [])
     if names:
         form_name = random.choice(names)
-    else:
-        # Fallback pattern if no names defined
-        form_name = f"{quality.capitalize()} {element.replace('-', ' ').title()} Form"
 
     return {
         "element":    element,
         "quality":    quality,
         "form_name":  form_name,
-        "modifier":   modifier
+        "modifier":   quality_modifier  
     }
 
 def main():
     parser = argparse.ArgumentParser(description="Generate a soul-form for TDAG.")
     parser.add_argument('-e', '--element_id', help="Element ID (e.g. 'ice')", default=None)
     parser.add_argument('-q', '--quality', help="Soul-form quality", default=None)
-    parser.add_argument('-o', '--output', choices=['json','pretty'], default='pretty',
-                        help="Output format")
+    parser.add_argument(
+    '--override', '-O',
+    action='append',
+    metavar='CAT:KEY=WEIGHT',
+    help="e.g. db:wolf=80 or el:ice=30"
+    )
+    parser.add_argument('-o', '--output', choices=['json', 'pretty'], default='pretty', help="Output format")
     args = parser.parse_args()
+    overrides = parse_overrides(args.override)  # where --override flags are collected
+    ctx = GenerationContext(**overrides)
 
     soul_form = generate_soul_form(element_id=args.element_id, quality=args.quality)
     if args.output == 'json':

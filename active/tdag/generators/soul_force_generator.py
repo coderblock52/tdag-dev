@@ -18,50 +18,23 @@ import os
 import json
 import random
 import argparse
-import bisect
-import itertools
-# do not need generation context here
+
+from meta.utils import load_json, get_common_paths, validate_value
+from helpers.weight_utils import weighted_randint
+from helpers.generation_context import GenerationContext, parse_overrides
 
 
-def load_json(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-def weighted_randint(x_min, x_max, w_min=0.005, w_max=10.0):
-    """
-    Return a random integer between x_min and x_max inclusive,
-    with weight w(x) = w_max - (w_max - w_min)*(x - x_min)/(x_max - x_min).
-    """
-    # 1) Build the discrete values and their weights
-    values = list(range(x_min, x_max + 1))
-    span   = x_max - x_min
-    # linear weight for each integer
-    weights = [
-        w_max - (w_max - w_min) * (x - x_min) / span
-        for x in values
-    ]
-
-    # 2) Build cumulative distribution
-    cum_weights = list(itertools.accumulate(weights))
-    total       = cum_weights[-1]
-
-    # 3) Sample a uniform random number in [0, total)
-    r = random.random() * total
-
-    # 4) Find the bucket via binary search
-    idx = bisect.bisect_right(cum_weights, r)
-    return values[idx]
-
-def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen'):
+def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen', ctx:GenerationContext=GenerationContext()) -> int:
     # Resolve directories
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
+    paths = get_common_paths()
+    reference_dir = paths['reference']
+    validators_dir = paths['validators']
 
     # Load range definitions
-    ranges_path = os.path.join(root_dir, 'reference', 'soul', 'soul_force_ranges.json')
-    ranges_data = load_json(ranges_path)
-    base_unit = ranges_data.get('base_unit', 100)
-    realm_map = ranges_data.get(realm)
+    ranks_path = os.path.join(reference_dir, 'soul', 'soul_force_ranks.json')
+    ranks_data = load_json(ranks_path)
+    base_unit = ranks_data.get('base_unit', 100)
+    realm_map = ranks_data.get(realm)
     if realm_map is None:
         raise ValueError(f"Unknown realm: {realm}")
 
@@ -71,32 +44,40 @@ def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen'):
     base_value = base_unit * multiplier
 
     # Validate minor_rank
-    validator_path = os.path.join(root_dir, 'validators', 'valid_soul_rank_structure.json')
-    validator = load_json(validator_path)
-    minors = validator['values'].get(realm, {}).get('minor_ranks', [])
-    if minor_rank not in minors:
-        raise ValueError(f"Invalid minor rank {minor_rank} for realm '{realm}'")
+    rank_validator_path = os.path.join(validators_dir, 'valid_soul_rank_structure.json')
+    rank_validator = load_json(rank_validator_path)
+    minor_ranks = rank_validator['values'].get(realm, {}).get('minor_ranks', [])
+    validate_value(minor_rank, minor_ranks)
+
 
     # Determine range
     min_val = minor_rank * base_value if minor_rank > 1 else 1
-    if minor_rank == minors[-1]:  # If it's the last minor rank
+    if minor_rank == minor_ranks[-1]:  # If it's the last minor rank
         # If it's the last minor rank, use the next major rank's base value
         max_val = base_value * 10
     else:
         max_val = (minor_rank + 1) * base_value
 
     # adjust weight of distrubution to favor lower values
-    return weighted_randint(min_val, max_val, w_min=0.25, w_max=1.0)
+    return weighted_randint(min_val, max_val, ctx.override_randint_weights['w_min'], ctx.override_randint_weights['w_max'])
 
 def main():
     parser = argparse.ArgumentParser(description="Generate a soul force value based on rank.")
     parser.add_argument('--major', required=False, help="Major rank (e.g., Bronze, Silver)")
     parser.add_argument('--minor', type=int, required=False, help="Minor rank number")
     parser.add_argument('--realm', choices=['earthen', 'heavenly'], default='earthen', help="Rank realm")
+    parser.add_argument(
+    '--override', '-O',
+    action='append',
+    metavar='CAT:KEY=WEIGHT',
+    help="e.g. db:wolf=80 or el:ice=30"
+    )
     parser.add_argument('-o', '--output', choices=['json', 'pretty'], default='pretty', help="Output format")
     args = parser.parse_args()
+    overrides = parse_overrides(args.override)  # where --override flags are collected
+    ctx = GenerationContext(**overrides)
 
-    value = generate_soul_force(args.major, args.minor, args.realm)
+    value = generate_soul_force(args.major, args.minor, args.realm, ctx)
     if args.output == 'json':
         print(json.dumps({"soul_force": value}))
     else:

@@ -9,12 +9,13 @@ class GenerationContext:
     override_demon_beast_weights: Dict[str, float]      = field(default_factory=dict)
     override_element_weights: Dict[str, float]          = field(default_factory=dict)
     override_soul_color_weights: Dict[str, float]     = field(default_factory=dict)
-    override_soul_form_weights: Dict[str, float]       = field(default_factory=dict)
+    override_soul_form_quality_weights: Dict[str, float]       = field(default_factory=dict)
     override_soul_rank_major_weights: Dict[str, float]       = field(default_factory=dict)
     override_soul_rank_minor_weights: Dict[str, float]       = field(default_factory=dict)
     override_cultivator_class_weights: Dict[str, float] = field(default_factory=dict)
     override_bloodline_weights: Dict[str, float]       = field(default_factory=dict)
-    override_cultivation_technique_weights: Dict[str, float] = field(default_factory=dict)
+    override_cultivation_technique_quality_weights: Dict[str, float] = field(default_factory=dict)
+    override_randint_weights: Dict[str, float] = field(default_factory=dict)
     realm: str = 'earthen'  # default realm, can be overridden
     # add other override maps here as needed
 
@@ -51,12 +52,13 @@ def parse_overrides(arg_list: Optional[List[str]]) -> Dict[str, Dict[str, float]
         'db':   'override_demon_beast_weights',       # Demon Beast
         'el':   'override_element_weights',           # Element
         'sc':   'override_soul_color_weights',        # Soul Color
-        'sf':   'override_soul_form_weights',         # Soul Form
+        'sf':   'override_soul_form_quality_weights', # Soul Form
         'srmj': 'override_soul_rank_major_weights',   # Soul Rank Major
         'srmn': 'override_soul_rank_minor_weights',   # Soul Rank Minor
         'cc':   'override_cultivator_class_weights',  # Cultivator Class
         'bl':   'override_bloodline_weights',         # Bloodline
-        'ct':   'override_cultivation_technique_weights',  # Cultivation Technique
+        'ct':   'override_cultivation_technique_quality_weights',  # Cultivation Technique
+        'ri':   'override_randint_weights',  # Random Integer weights
         'r':   'realm',  # Realm, not a weight but can be set
         # extend with additional categories
     }
