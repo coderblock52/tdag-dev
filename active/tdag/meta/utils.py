@@ -36,7 +36,7 @@ def validate_value(value, valid_values):
     Raises ValueError if the value is not valid.
     """
     if value not in valid_values:
-        raise ValueError(f"Invalid value: {value}. Valid values are: {', '.join(valid_values)}")
+        raise ValueError(f"Invalid value: {value}. Valid values are: {', '.join(str(valid_value) for valid_value in valid_values)}")
     
     return True
 

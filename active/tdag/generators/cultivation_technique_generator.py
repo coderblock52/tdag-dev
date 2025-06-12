@@ -9,7 +9,7 @@ def load_json(path):
 
 def generate_cultivation_technique(quality=None, element=None,
                                    ctx: GenerationContext = GenerationContext()) -> dict:
-    from cultivation_name_generator import generate_technique_name
+    from generators.cultivation_technique_name_generator import generate_technique_name
     from element_generator import generate_element
 
     script_dir = os.path.dirname(os.path.abspath(__file__))

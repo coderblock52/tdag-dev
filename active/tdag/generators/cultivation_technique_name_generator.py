@@ -32,7 +32,6 @@ def generate_technique_name(element: str, quality: str) -> str:
     """
     # Resolve directories
     paths = get_common_paths()
-    root_dir = paths['root']
     reference_dir = paths['reference']
     
     ####
@@ -40,8 +39,7 @@ def generate_technique_name(element: str, quality: str) -> str:
     if quality == 'good':
         # special case: pick a Demon Beast type instead
         db_path = os.path.join(
-            root_dir,
-            'reference',
+            reference_dir,
             'demon_beast',
             'demon_beast_types.json'
         )
@@ -50,8 +48,7 @@ def generate_technique_name(element: str, quality: str) -> str:
     else:
         # Load quality name map
         qmap_path = os.path.join(
-        root_dir,
-        'reference',
+        reference_dir,
         'cultivation_technique',
         'cultivation_quality_name_map.json'
     )
@@ -61,8 +58,7 @@ def generate_technique_name(element: str, quality: str) -> str:
 
     # 2) Load element display name
     elements_path = os.path.join(
-        root_dir,
-        'reference',
+        reference_dir,
         'elements',
         'elements.json'
     )
@@ -97,25 +93,19 @@ def main():
     args = parser.parse_args()
 
     # Default fallbacks
+    paths = get_common_paths()
     quality = args.quality or random.choice(
-        load_json(os.path.join(
-            os.path.abspath(os.path.join(
-                os.path.dirname(os.path.abspath(__file__)), '..'
-            )),
+        load_json(paths['root'],
             'validators',
             'valid_cultivation_technique_qualities.json'
         ))['values']
-    )
+    
     element = args.element or random.choice(
-        [e['id'] for e in load_json(os.path.join(
-            os.path.abspath(os.path.join(
-                os.path.dirname(os.path.abspath(__file__)), '..'
-            )),
+        [e['id'] for e in load_json(paths['root'],
             'reference',
             'elements',
-            'elements.json'
-        ))]
-    )
+            'elements.json')]
+            )
 
     name = generate_technique_name(element, quality)
     if args.output == 'json':
