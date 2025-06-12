@@ -40,3 +40,30 @@ def validate_value(value, valid_values):
     
     return True
 
+def import_all_modules_from_dir(directory, target_globals):
+    import importlib.util
+    import sys
+    from pathlib import Path
+
+    directory = Path(directory).resolve()
+
+    if str(directory) not in sys.path:
+        sys.path.insert(0, str(directory))
+
+    for file in directory.glob("*.py"):
+        if file.name == "__init__.py":
+            continue
+
+        module_name = file.stem
+        spec = importlib.util.spec_from_file_location(module_name, file)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        target_globals[module_name] = module
+        print(f"✅ Imported module: {module_name}")
+
+        for name in dir(module):
+            if not name.startswith("_"):
+                obj = getattr(module, name)
+                target_globals[name] = obj
+                print(f"↳ Injected: {name} from {module_name}")
