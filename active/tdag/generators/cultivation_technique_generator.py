@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+from generators.registry import register
 import os, json, random, uuid, argparse
 from helpers.generation_context import GenerationContext, parse_overrides
 from helpers.weight_utils import weighted_choice
 from meta.utils import load_json, get_common_paths
 
+@register('cultivation_technique')
 def generate_cultivation_technique(quality=None, element=None,
                                    ctx: GenerationContext = GenerationContext()) -> dict:
     from generators.cultivation_technique_name_generator import generate_technique_name

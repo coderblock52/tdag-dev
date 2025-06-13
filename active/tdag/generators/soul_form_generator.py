@@ -30,6 +30,8 @@ def load_json(path: str):
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
+from generators.registry import register
+@register('soul_form')
 def generate_soul_form(element: str = None, quality: str = None, ctx:GenerationContext=GenerationContext()) -> dict:
     from element_generator import generate_element
     # Resolve dirs

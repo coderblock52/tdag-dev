@@ -22,6 +22,8 @@ from element_generator import generate_element
 from soul_form_generator import generate_soul_form
 
 
+from generators.registry import register
+@register('soul')
 def generate_soul(element = None,
                   quality: str = None) -> dict:
     """

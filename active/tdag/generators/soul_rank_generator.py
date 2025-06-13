@@ -19,6 +19,8 @@ from helpers.weight_utils import weighted_choice
 from meta.utils import load_json, get_common_paths, validate_value
 # need to refactor downstream soul force generators and soul rank generators to be able to be 'none' and have a soul force of 0.0
 
+from generators.registry import register
+@register('soul_rank')
 def generate_soul_rank(ctx:GenerationContext=GenerationContext()) -> dict:
     """
     Randomly select a major and minor soul rank in the given realm,

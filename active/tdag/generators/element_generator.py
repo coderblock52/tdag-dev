@@ -21,6 +21,8 @@ from helpers.weight_utils import weighted_choice
 from meta.utils import get_common_paths, load_json
 
 
+from generators.registry import register
+@register('element')
 def generate_element(element_id: str = None,
                      soul_force: int = None,
                      ctx:GenerationContext = GenerationContext()) -> dict:

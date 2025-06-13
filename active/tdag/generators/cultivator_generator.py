@@ -29,7 +29,8 @@ from helpers.weight_utils import weighted_choice
 from helpers.generation_context import GenerationContext, parse_overrides
 from meta.utils import load_json, get_common_paths, validate_value
 
-
+from generators.registry import register
+@register('cultivator')
 def generate_cultivator() -> dict:
     from soul_generator import generate_soul
     from soul_rank_generator import generate_soul_rank

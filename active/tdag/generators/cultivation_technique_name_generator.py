@@ -13,12 +13,14 @@ Final format: "<Element Display> <Tech Root> Technique"
 Usage (CLI):
     python cultivation_name_generator.py [-e ELEMENT_ID] [-q QUALITY] [-o json|pretty]
 """
+from generators.registry import register
 import os
 import json
 import random
 import argparse
 from meta.utils import load_json, get_common_paths
 
+@register('technique_name')
 def generate_technique_name(element: str, quality: str) -> str:
     """
     Generate a cultivation technique name by combining an element display name

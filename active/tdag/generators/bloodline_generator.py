@@ -19,6 +19,7 @@ And produces a full bloodline object:
 Usage:
     python bloodline_generator.py [-o json|pretty]
 """
+from generators.registry import register
 import json
 import os
 import argparse
@@ -26,6 +27,8 @@ from meta.utils import load_json, get_common_paths, validate_value
 from helpers.weight_utils import weighted_choice
 from helpers.generation_context import GenerationContext, parse_overrides
 
+
+@register('bloodline')
 def generate_bloodline(origin_beast_type=None, 
                        force_bloodline_tier:str=None, # optional override for specific calls
                        ctx: GenerationContext = GenerationContext(),

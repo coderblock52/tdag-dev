@@ -23,7 +23,8 @@ from meta.utils import load_json, get_common_paths, validate_value
 from helpers.weight_utils import weighted_randint
 from helpers.generation_context import GenerationContext, parse_overrides
 
-
+from generators.registry import register
+@register('soul_force')
 def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen', ctx:GenerationContext=GenerationContext()) -> int:
     # Resolve directories
     paths = get_common_paths()

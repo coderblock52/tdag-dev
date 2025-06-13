@@ -18,6 +18,8 @@ from meta.utils import load_json, get_common_paths, validate_value
 # - implement bloodline generation being determined by current soul force
 # - potentially implement certain demon beast types being more likely under certain conditions
 
+from generators.registry import register
+@register('demon_beast')
 def generate_demon_beast(realm:str = 'earthen',
                          ctx: GenerationContext = GenerationContext()
                          ) -> dict:

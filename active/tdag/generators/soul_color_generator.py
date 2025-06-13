@@ -24,6 +24,8 @@ from helpers.weight_utils import weighted_choice
 from meta.utils import load_json, get_common_paths
 
 
+from generators.registry import register
+@register('soul_color')
 def generate_soul_color(ctx:GenerationContext=GenerationContext()) -> dict:
     """
     Randomly select a soul color and its rarity.
