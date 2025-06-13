@@ -16,11 +16,8 @@ import argparse
 from soul_force_generator import generate_soul_force
 from helpers.generation_context import GenerationContext, parse_overrides
 from helpers.weight_utils import weighted_choice
-
-
-def load_json(path: str) -> dict:
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+from meta.utils import load_json, get_common_paths, validate_value
+# need to refactor downstream soul force generators and soul rank generators to be able to be 'none' and have a soul force of 0.0
 
 def generate_soul_rank(ctx:GenerationContext=GenerationContext()) -> dict:
     """
@@ -36,32 +33,21 @@ def generate_soul_rank(ctx:GenerationContext=GenerationContext()) -> dict:
         dict with keys 'major', 'minor', 'soul_force'
     """
     # Resolve project directories
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
-    validators_dir = os.path.join(root_dir, 'validators')
+    paths = get_common_paths()
+    reference_dir = paths['reference']
 
-    # Load soul rank structure
-    val_path = os.path.join(validators_dir, 'valid_soul_rank_structure.json')
-    rank_data = load_json(val_path).get('values', {})
-    realm_data = rank_data.get(ctx.realm, {})
-
-    if ctx.realm == 'earthen':
-        major_rank_weight_path = os.path.join(root_dir, 'reference', 'roll_weights', 'ranks', 'soul_major_ranks_earthen.json')
-        minor_rank_weight_path = os.path.join(root_dir, 'reference', 'roll_weights', 'ranks', 'soul_minor_ranks_earthen.json')
-    elif ctx.realm == 'heavenly':
-        major_rank_weight_path = os.path.join(root_dir, 'reference', 'roll_weights', 'ranks', 'soul_major_ranks_heavenly.json')
-        minor_rank_weight_path = os.path.join(root_dir, 'reference', 'roll_weights', 'ranks', 'soul_minor_ranks_heavenly.json')
-    major_ranks = realm_data.get('major_ranks', [])
-    minor_ranks = realm_data.get('minor_ranks', [])
+    # Load soul rank list for given realm
+    major_rank_list = load_json(os.path.join(reference_dir, 'soul', 'soul_force_ranks.json')).get(ctx.realm, {}).keys()
+    minor_rank_list = load_json(os.path.join(reference_dir, 'soul', 'soul_force_minor_ranks.json')).get(ctx.realm, {})
 
     # Select ranks with optional weights
-    major = weighted_choice(major_ranks,
-                            weights_path=major_rank_weight_path,
+    major = weighted_choice(major_rank_list,
+                            weights_path=os.path.join(reference_dir, 'roll_weights', 'ranks', f'soul_major_ranks_{ctx.realm}.json'),
                             override_weights=ctx.override_soul_rank_major_weights,
                             exclusive=True
                            )
-    minor = weighted_choice(minor_ranks,
-                            weights_path=minor_rank_weight_path,
+    minor = weighted_choice(minor_rank_list,
+                            weights_path=os.path.join(reference_dir, 'roll_weights', 'ranks', f'soul_minor_ranks_{ctx.realm}.json'),
                             override_weights=ctx.override_soul_rank_minor_weights,
                             exclusive=True
                            )

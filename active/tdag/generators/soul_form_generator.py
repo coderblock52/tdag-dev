@@ -41,12 +41,12 @@ def generate_soul_form(element: str = None, quality: str = None, ctx:GenerationC
         element = generate_element(ctx=ctx)
 
     # 2) Quality fallback (auto excludes highest tiers):
-        quality = quality or weighted_choice(
-            load_json(os.path.join(reference_dir, 'soul', 'soul_form_quality.json')),
-            weights_path=os.path.join(reference_dir, 'roll_weights', 'soul_form_quality.json'),
-            override_weights=ctx.override_soul_form_quality_weights,
-            exclusive=True
-        )
+    quality = quality or weighted_choice(
+        load_json(os.path.join(reference_dir, 'soul', 'soul_form_quality.json')),
+        weights_path=os.path.join(reference_dir, 'roll_weights', 'soul_form_quality.json'),
+        override_weights=ctx.override_soul_form_quality_weights,
+        exclusive=True
+    )
 
 
     # 3) Load modifier for this quality
@@ -57,8 +57,7 @@ def generate_soul_form(element: str = None, quality: str = None, ctx:GenerationC
     name_map = load_json(os.path.join(reference_dir, 'soul', 'soul_form_name_map.json'))
     element_map = name_map.get(element['id'], {})
     names = element_map.get(quality, [])
-    if names:
-        form_name = random.choice(names)
+    form_name = random.choice(names)
 
     return {
         "element":    element,

@@ -38,10 +38,7 @@ def generate_soul(element = None,
     #    Pass element id and quality to control form name and modifier
     soul_form = generate_soul_form(element, quality=quality)
 
-    return {
-        'element':    element,
-        'soul_form':  soul_form
-    }
+    return soul_form
 
 
 def main():

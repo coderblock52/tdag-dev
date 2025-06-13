@@ -25,22 +25,17 @@ import os
 import json
 import uuid
 import argparse
-
-from element_generator import generate_element
-from soul_generator import generate_soul
-from soul_rank_generator import generate_soul_rank
-from soul_color_generator import generate_soul_color
-from bloodline_generator import generate_bloodline
-from cultivation_technique_generator import generate_cultivation_technique
-# todo: need to use generation context
-
-
-def load_json(path: str) -> dict:
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+from helpers.weight_utils import weighted_choice
+from helpers.generation_context import GenerationContext, parse_overrides
+from meta.utils import load_json, get_common_paths, validate_value
 
 
 def generate_cultivator() -> dict:
+    from soul_generator import generate_soul
+    from soul_rank_generator import generate_soul_rank
+    from soul_color_generator import generate_soul_color
+    from bloodline_generator import generate_bloodline
+    from cultivation_technique_generator import generate_cultivation_technique
     # 1) Soul (element + form)
     soul = generate_soul()
 
@@ -73,12 +68,15 @@ def generate_cultivator() -> dict:
     # simple: use soul_force as base
     cached_combat_power = soul_force
 
+    print()
     cultivator = {
         'id': str(uuid.uuid4()),
-        'soul': soul,
-        'soul_rank': {'major': major, 'minor': minor},
-        'soul_force': soul_force,
-        'soul_color': {'color': soul_color, 'rarity': color_rarity},
+        'soul':{
+            'soul_form': soul,
+            'soul_rank': {'major': major, 'minor': minor},
+            'soul_force': soul_force,
+            'soul_color': {'color': soul_color, 'rarity': color_rarity},
+        },
         'body_rank': body_rank,
         'class': cls,
         'bloodline': bloodline,

@@ -58,8 +58,8 @@ def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen', ctx
     else:
         max_val = (minor_rank + 1) * base_value
 
-    # adjust weight of distrubution to favor lower values
-    return weighted_randint(min_val, max_val, ctx.override_randint_weights['w_min'], ctx.override_randint_weights['w_max'])
+    # adjust weight of distribution to favor lower values
+    return weighted_randint(min_val, max_val, ctx)
 
 def main():
     parser = argparse.ArgumentParser(description="Generate a soul force value based on rank.")

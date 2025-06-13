@@ -60,6 +60,7 @@ def import_all_modules_from_dir(directory, target_globals):
         spec.loader.exec_module(module)
 
         target_globals[module_name] = module
+        sys.modules[module_name] = module
         print(f"✅ Imported module: {module_name}")
 
         for name in dir(module):

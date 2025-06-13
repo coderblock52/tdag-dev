@@ -43,10 +43,9 @@ def generate_bloodline(origin_beast_type=None,
                             exclusive=True)
     validate_value(tier, bloodline_modifier_map.keys())
 
-    # Random selections
+    demon_beast_types_list = load_json(os.path.join(reference_dir, 'demon_beast', 'demon_beast_types.json')) # define outside so we can still validate origin_beast_type
     if not origin_beast_type:
         # Load valid demon beast types
-        demon_beast_types_list = load_json(os.path.join(reference_dir, 'demon_beast', 'demon_beast_types.json'))
         origin_beast_type = weighted_choice(
             list(demon_beast_types_list),
             weights_path=os.path.join(reference_dir, 'roll_weights', 'demon_beast_types.json'),

@@ -38,6 +38,7 @@ import random
 from typing import Mapping, Sequence, Optional, TypeVar
 import bisect
 import itertools
+from helpers.generation_context import GenerationContext
 
 T = TypeVar('T')
 
@@ -68,6 +69,7 @@ exclusive: bool = False
                         or if override keys are not in base_weights,
                         or if no items remain when exclusive=True.
     """
+    print(f'weighted_choice called with {items} items, exclusive={exclusive}, base_weights={base_weights is not None}, weights_path={weights_path}, override_weights={override_weights}')
     # Load base_weights from JSON file if path provided
     if base_weights is None:
         if not weights_path:
@@ -106,11 +108,13 @@ exclusive: bool = False
     # Perform weighted random choice
     return random.choices(candidates, weights=weights, k=1)[0]
 
-def weighted_randint(x_min, x_max, w_min=0.005, w_max=10.0):
+def weighted_randint(x_min, x_max, ctx:GenerationContext=GenerationContext()):
     """
     Return a random integer between x_min and x_max inclusive,
     with weight w(x) = w_max - (w_max - w_min)*(x - x_min)/(x_max - x_min).
     """
+    w_min = ctx.override_randint_weights.get('w_min') or 1.0
+    w_max = ctx.override_randint_weights.get('w_max') or 10.0
     # 1) Build the discrete values and their weights
     values = list(range(x_min, x_max + 1))
     span   = x_max - x_min

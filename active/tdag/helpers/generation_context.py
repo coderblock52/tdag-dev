@@ -6,6 +6,7 @@ import argparse
 
 @dataclass
 class GenerationContext:
+
     override_demon_beast_weights: Dict[str, float]      = field(default_factory=dict)
     override_element_weights: Dict[str, float]          = field(default_factory=dict)
     override_soul_color_weights: Dict[str, float]     = field(default_factory=dict)
@@ -18,6 +19,9 @@ class GenerationContext:
     override_randint_weights: Dict[str, float] = field(default_factory=dict)
     realm: str = 'earthen'  # default realm, can be overridden
     # add other override maps here as needed
+
+    def __post_init__(self):
+        self.override_randint_weights = {'w_min': 1.0, 'w_max': 10.0}
 
 def parse_overrides(arg_list: Optional[List[str]]) -> Dict[str, Dict[str, float]]:
     """

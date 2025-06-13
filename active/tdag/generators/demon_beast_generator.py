@@ -2,39 +2,6 @@
 """
 Demon Beast Object Generator for TDAG Simulation
 
-This script resides in <root_directory>/generators/demon_beast_generator.py and
-produces a complete demon beast object conforming to your schema.
-
-It dynamically loads:
-
-validators/valid_demon_beast_types.json for beast types
-
-validators/valid_soul_rank_structure.json for soul ranks
-
-validators/valid_bloodline_tiers.json for bloodline tiers (fallback)
-
-reference/demon_beast_element_names.json for element name mapping
-
-reference/soul/bloodline_modifier_by_tier.json for bloodline modifiers
-
-<script_dir>/bloodline_generator.py for full bloodline object generation
-
-Generated fields:
-
-name: flavor name combining element variant and beast type
-
-soul_rank: {major, minor}
-
-demon_beast_type
-
-stats.soul_force
-
-soul.element
-
-soul.bloodline: bloodline name
-
-bloodline_object: full bloodline object with metadata
-
 Usage:
 python demon_beast_generator.py [-o json|pretty]
 """
@@ -46,15 +13,11 @@ import importlib.util
 import random
 from helpers.weight_utils import weighted_choice
 from helpers.generation_context import GenerationContext, parse_overrides
+from meta.utils import load_json, get_common_paths, validate_value
 #todo:
 # - implement bloodline generation being determined by current soul force
 # - potentially implement certain demon beast types being more likely under certain conditions
 
-
-def load_json(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
-    
 def generate_demon_beast(realm:str = 'earthen',
                          ctx: GenerationContext = GenerationContext()
                          ) -> dict:
@@ -63,17 +26,13 @@ def generate_demon_beast(realm:str = 'earthen',
     from bloodline_generator import generate_bloodline
 
     # Directories
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.abspath(os.path.join(script_dir, '..'))
-    validators_dir = os.path.join(root_dir, 'validators')
-    reference_dir = os.path.join(root_dir, 'reference')
-
+    paths = get_common_paths()
+    reference_dir = paths['reference']
 
     # 1. Demon beast type
-    beast_types_data = load_json(os.path.join(validators_dir, 'valid_demon_beast_types.json'))
-    demon_beast_types = beast_types_data.get('values', beast_types_data)
+    demon_beast_types_list = load_json(os.path.join(reference_dir, 'demon_beast', 'demon_beast_types.json'))
     demon_beast_type = weighted_choice(
-        list(demon_beast_types),
+        demon_beast_types_list,
         weights_path=os.path.join(reference_dir, 'roll_weights', 'demon_beast_types.json'),
         override_weights= ctx.override_demon_beast_weights,
         exclusive=True
@@ -85,7 +44,7 @@ def generate_demon_beast(realm:str = 'earthen',
     # 3. Element attribute and name variant
 
     element_name_mapping = load_json(os.path.join(reference_dir, 'element_names_map.json'))
-    element = generate_element(ctx=ctx, soul_force = soul_rank_data['soul_force'])  # returns {'id', 'display_name', ...}
+    element = generate_element(ctx=ctx, soul_force = soul_rank_data['soul_force'])
     element_id = element['id']
     element_name = random.choice(element_name_mapping[element_id])
 
@@ -98,12 +57,12 @@ def generate_demon_beast(realm:str = 'earthen',
     # Assemble demon beast object
     demon_beast = {
         'name': full_name,
-        'soul_rank': {'major': soul_rank_data['major'], 'minor': soul_rank_data['minor']},
         'demon_beast_type': demon_beast_type,
         'stats': {'soul_force': soul_rank_data['soul_force'],
                   'cached_combat_power': 0  # Placeholder
                   },
         'soul': {
+            'soul_rank': {'major': soul_rank_data['major'], 'minor': soul_rank_data['minor']},
             'element': element,
         },
         'bloodline': bloodline

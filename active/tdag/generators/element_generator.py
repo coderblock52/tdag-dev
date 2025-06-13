@@ -45,6 +45,8 @@ def generate_element(element_id: str = None,
     # Random selection
     # exclusive if a weight dict is provided, otherwise it's not exclusive
     # but if a soul force is provided, we need to setup the weight to be None:0.0 if soul_force is 10,000 or more
+    element_weights= ctx.override_element_weights or {}
+    print(ctx.override_element_weights)
     if ctx.override_element_weights:
         exclusive = True
     else:
@@ -52,16 +54,16 @@ def generate_element(element_id: str = None,
     if soul_force:
         if soul_force >= 10000:
             # Force an element to exist if soul force is gold or above
-            ctx.override_element_weights['None'] = 0.0
+            element_weights['none'] = 0.0
         elif soul_force < 1000:
             # If soul force is below silver, no element is allowed
-            ctx.override_element_weights = {'None':1.0}
+            element_weights = {'none':1.0}
             exclusive = True
 
     element_id = weighted_choice(
         list(element_map.keys()),
         weights_path=os.path.join(reference_dir, 'roll_weights', 'elements.json'),
-        override_weights=ctx.override_element_weights,
+        override_weights=element_weights,
         exclusive=exclusive
     )
     return element_map[element_id.lower()]
