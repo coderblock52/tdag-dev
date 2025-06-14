@@ -13,13 +13,13 @@ class GenerationContext:
     override_soul_form_quality_weights: Dict[str, float]       = field(default_factory=dict)
     override_soul_rank_major_weights: Dict[str, float]       = field(default_factory=dict)
     override_soul_rank_minor_weights: Dict[str, float]       = field(default_factory=dict)
+    override_body_rank_weights: Dict[str, float] = field(default_factory=dict)
     override_cultivator_class_weights: Dict[str, float] = field(default_factory=dict)
     override_bloodline_weights: Dict[str, float]       = field(default_factory=dict)
     override_cultivation_technique_quality_weights: Dict[str, float] = field(default_factory=dict)
     override_randint_weights: Dict[str, float] = field(default_factory=dict)
     realm: str = 'earthen'  # default realm, can be overridden
     # add other override maps here as needed
-
     def __post_init__(self):
         self.override_randint_weights = {'w_min': 1.0, 'w_max': 10.0}
 
@@ -59,6 +59,7 @@ def parse_overrides(arg_list: Optional[List[str]]) -> Dict[str, Dict[str, float]
         'sf':   'override_soul_form_quality_weights', # Soul Form
         'srmj': 'override_soul_rank_major_weights',   # Soul Rank Major
         'srmn': 'override_soul_rank_minor_weights',   # Soul Rank Minor
+        'br': 'override_body_rank_weights',   # Body Rank
         'cc':   'override_cultivator_class_weights',  # Cultivator Class
         'bl':   'override_bloodline_weights',         # Bloodline
         'ct':   'override_cultivation_technique_quality_weights',  # Cultivation Technique

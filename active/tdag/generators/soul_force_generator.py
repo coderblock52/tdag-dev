@@ -31,6 +31,15 @@ def generate_soul_force(major_rank:str, minor_rank:int, realm:str='earthen', ctx
     reference_dir = paths['reference']
     validators_dir = paths['validators']
 
+    if major_rank == 'None' and minor_rank == 'None':
+        # If both ranks are 'None', generate a soul force of 0 to 80
+        pass_ctx = ctx.copy()
+        pass_ctx.override_randint_weights = {
+        'w_min': 0.2,
+        'w_max': 10.0
+        }
+        return weighted_randint(0, 80, ctx)
+
     # Load range definitions
     ranks_path = os.path.join(reference_dir, 'soul', 'soul_force_ranks.json')
     ranks_data = load_json(ranks_path)

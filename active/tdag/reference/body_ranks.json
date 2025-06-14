@@ -1,0 +1,18 @@
+{
+"base_unit": 100,
+"earthen": {
+    "None": 0,
+    "Bronze": 1,
+    "Silver": 10,
+    "Gold": 100,
+    "Black Gold": 1000,
+    "Legendary": 10000
+},
+"heavenly": {
+    "Heavenly Fate": 100000,
+    "Heavenly Star": 1000000,
+    "Heavenly Axis": 10000000,
+    "Dao of Dragon": 100000000,
+    "Martial Ancestor": 1000000000
+}
+}

@@ -33,7 +33,7 @@ def load_json(path: str):
 from generators.registry import register
 @register('soul_form')
 def generate_soul_form(element: str = None, quality: str = None, ctx:GenerationContext=GenerationContext()) -> dict:
-    from element_generator import generate_element
+    from generators.element_generator import generate_element
     # Resolve dirs
     paths = get_common_paths()
     reference_dir = paths['reference']

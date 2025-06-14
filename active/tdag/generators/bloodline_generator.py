@@ -4,11 +4,6 @@ Bloodline Generator for Demon Beasts (TDAG Simulation)
 
 Location: <root_directory>/generators/bloodline_generator.py
 
-This script loads:
-- validators/valid_demon_beast_types.json
-- validators/valid_bloodline_tiers.json
-- reference/soul/bloodline_modifier_by_tier.json
-
 And produces a full bloodline object:
 - origin_beast_type
 - tier

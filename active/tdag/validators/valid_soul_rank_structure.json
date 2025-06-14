@@ -9,7 +9,7 @@
   "linked_files": [],
   "values": {
     "earthen": {
-      "major_ranks": ["Bronze", "Silver", "Gold", "Black Gold", "Legendary"],
+      "major_ranks": ["None", "Bronze", "Silver", "Gold", "Black Gold", "Legendary"],
       "minor_ranks": [1, 2, 3, 4, 5]
     },
     "heavenly": {

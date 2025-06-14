@@ -1,6 +1,7 @@
 {
 "base_unit": 100,
 "earthen": {
+"None": 0,
 "Bronze": 1,
 "Silver": 10,
 "Gold": 100,

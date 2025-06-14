@@ -18,14 +18,16 @@ Usage:
 import argparse
 import json
 
-from element_generator import generate_element
-from soul_form_generator import generate_soul_form
+from generators.element_generator import generate_element
+from generators.soul_form_generator import generate_soul_form
+from helpers.generation_context import GenerationContext, parse_overrides
 
 
 from generators.registry import register
 @register('soul')
 def generate_soul(element = None,
-                  quality: str = None) -> dict:
+                  quality: str = None,
+                  ctx:GenerationContext=GenerationContext()) -> dict:
     """
     Build a soul object:
     - element_id: optional, picks random if None
@@ -47,9 +49,22 @@ def main():
     parser = argparse.ArgumentParser(description="Generate a soul for TDAG cultivators.")
     parser.add_argument('-e', '--element', help="Element ID (e.g., 'ice')", default=None)
     parser.add_argument('-q', '--quality', help="Soul-form quality", default=None)
-    parser.add_argument('-o', '--output', choices=['json','pretty'], default='pretty',
-                        help="Output format: 'json' for raw output, 'pretty' for indented.")
+    parser.add_argument(
+    '--override', '-O',
+    action='append',
+    metavar='CAT:KEY=WEIGHT',
+    help="e.g. db:wolf=80 or el:ice=30"
+    )
+    parser.add_argument(
+    '-o', '--output',
+    choices=['json', 'pretty'],
+    default='pretty',
+    help="Output format: 'json' for raw, 'pretty' for indented."
+    )
     args = parser.parse_args()
+    overrides = parse_overrides(args.override)  # where --override flags are collected
+    ctx = GenerationContext(**overrides)
+
 
     soul = generate_soul(element=args.element,
                          quality=args.quality,

@@ -14,7 +14,8 @@ def get_common_paths():
         'validators': os.path.join(root_dir, 'validators'),
         'reference': os.path.join(root_dir, 'reference'),
         'generators': os.path.join(root_dir, 'generators'),
-        'helpers': os.path.join(root_dir, 'helpers')
+        'helpers': os.path.join(root_dir, 'helpers'),
+        'roll_weights': os.path.join(root_dir, 'reference', 'roll_weights')
     }
     
     return paths

@@ -9,7 +9,7 @@ from meta.utils import load_json, get_common_paths
 def generate_cultivation_technique(quality=None, element=None,
                                    ctx: GenerationContext = GenerationContext()) -> dict:
     from generators.cultivation_technique_name_generator import generate_technique_name
-    from element_generator import generate_element
+    from generators.element_generator import generate_element
 
     paths = get_common_paths()
     validators_dir = paths['validators']

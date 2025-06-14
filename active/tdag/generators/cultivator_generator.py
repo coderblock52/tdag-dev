@@ -31,35 +31,46 @@ from meta.utils import load_json, get_common_paths, validate_value
 
 from generators.registry import register
 @register('cultivator')
-def generate_cultivator() -> dict:
-    from soul_generator import generate_soul
-    from soul_rank_generator import generate_soul_rank
-    from soul_color_generator import generate_soul_color
-    from bloodline_generator import generate_bloodline
-    from cultivation_technique_generator import generate_cultivation_technique
+def generate_cultivator(ctx:GenerationContext=GenerationContext()) -> dict:
+    from generators.soul_generator import generate_soul
+    from generators.soul_rank_generator import generate_soul_rank
+    from generators.soul_color_generator import generate_soul_color
+    from generators.bloodline_generator import generate_bloodline
+    from generators.cultivation_technique_generator import generate_cultivation_technique
+    paths = get_common_paths()
+
+    roll_weights_dir = paths.get('roll_weights')
     # 1) Soul (element + form)
-    soul = generate_soul()
+    soul = generate_soul(ctx=ctx)
 
     # 2) Soul rank & force
-    rank_info = generate_soul_rank()
+    rank_info = generate_soul_rank(ctx=ctx)
     major = rank_info['major']
     minor = rank_info['minor']
     soul_force = rank_info['soul_force']
 
     # 3) Soul color
-    color_info = generate_soul_color()
+    color_info = generate_soul_color(ctx=ctx)
     soul_color = color_info['color']
     color_rarity = color_info['rarity']
 
     # 4) Body rank and class
-    body_rank = major
-    cls = 'fighter' if soul_force < 100 else 'cultivator'
+    char_class = 'fighter' if soul_force < 100 else 'cultivator'
+    if char_class == 'fighter':
+        #randomize body rank
+        body_map = load_json(os.path.join(roll_weights_dir, 'ranks', 'body_ranks.json'))
+        weighted_choice(list(body_map.keys()),
+                        base_weights=body_map,
+                        override_weights=ctx.override_body_rank_weights,
+                        exclusive=True)
+    else:
+        body_rank = major
 
     # 5) Bloodline generation (optional)
-    bloodline = generate_bloodline(origin_beast_type=None)
+    bloodline = generate_bloodline(origin_beast_type=None, ctx=ctx)
 
     # 6) Active cultivation technique (optional)
-    technique = generate_cultivation_technique()
+    technique = generate_cultivation_technique(ctx=ctx)
     active_tech_id = technique.get('id') if technique else None
 
     # 7) Cached cultivation speed
@@ -69,7 +80,6 @@ def generate_cultivator() -> dict:
     # simple: use soul_force as base
     cached_combat_power = soul_force
 
-    print()
     cultivator = {
         'id': str(uuid.uuid4()),
         'soul':{
@@ -79,7 +89,7 @@ def generate_cultivator() -> dict:
             'soul_color': {'color': soul_color, 'rarity': color_rarity},
         },
         'body_rank': body_rank,
-        'class': cls,
+        'char_class': char_class,
         'bloodline': bloodline,
         'active_cultivation_technique': active_tech_id,
         'cached_cultivation_speed': cultivation_base_speed,

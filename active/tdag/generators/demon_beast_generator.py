@@ -23,9 +23,9 @@ from generators.registry import register
 def generate_demon_beast(realm:str = 'earthen',
                          ctx: GenerationContext = GenerationContext()
                          ) -> dict:
-    from soul_rank_generator import generate_soul_rank
-    from element_generator import generate_element
-    from bloodline_generator import generate_bloodline
+    from generators.soul_rank_generator import generate_soul_rank
+    from generators.element_generator import generate_element
+    from generators.bloodline_generator import generate_bloodline
 
     # Directories
     paths = get_common_paths()

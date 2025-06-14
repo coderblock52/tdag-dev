@@ -13,11 +13,11 @@ import os
 import json
 import random
 import argparse
-from soul_force_generator import generate_soul_force
+from generators.soul_force_generator import generate_soul_force
 from helpers.generation_context import GenerationContext, parse_overrides
 from helpers.weight_utils import weighted_choice
 from meta.utils import load_json, get_common_paths, validate_value
-# need to refactor downstream soul force generators and soul rank generators to be able to be 'none' and have a soul force of 0.0
+# todo: need to refactor downstream soul force generators and soul rank generators to be able to be 'none' and have a soul force of 0.0
 
 from generators.registry import register
 @register('soul_rank')
@@ -48,11 +48,15 @@ def generate_soul_rank(ctx:GenerationContext=GenerationContext()) -> dict:
                             override_weights=ctx.override_soul_rank_major_weights,
                             exclusive=True
                            )
-    minor = weighted_choice(minor_rank_list,
-                            weights_path=os.path.join(reference_dir, 'roll_weights', 'ranks', f'soul_minor_ranks_{ctx.realm}.json'),
-                            override_weights=ctx.override_soul_rank_minor_weights,
-                            exclusive=True
-                           )
+    if major != 'None':
+        minor = weighted_choice(minor_rank_list,
+                                weights_path=os.path.join(reference_dir, 'roll_weights', 'ranks', f'soul_minor_ranks_{ctx.realm}.json'),
+                                override_weights=ctx.override_soul_rank_minor_weights,
+                                exclusive=True
+                            )
+    else:
+        # If major is 'None', minor must also be 'None'
+        minor = 'None'
 
     # Compute soul force
     soul_force = generate_soul_force(major_rank=major,
